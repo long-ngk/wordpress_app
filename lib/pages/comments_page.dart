@@ -24,7 +24,13 @@ class CommentsPage extends StatefulWidget {
   final int? postId;
   final String postTitle;
   final String postLink;
-  const CommentsPage({Key? key, required this.postId, required this.categoryId, required this.postTitle, required this.postLink}) : super(key: key);
+  const CommentsPage(
+      {Key? key,
+      required this.postId,
+      required this.categoryId,
+      required this.postTitle,
+      required this.postLink})
+      : super(key: key);
 
   @override
   _CommentsPageState createState() => _CommentsPageState();
@@ -52,8 +58,9 @@ class _CommentsPageState extends State<CommentsPage> {
             if (isSuccesfull) {
               textFieldCtrl.clear();
               setState(() => _isSomethingChanging = false);
-              openDialog(context, 'comment success title'.tr(),
-                  'comment success description'.tr());
+              // openDialog(context, 'comment success title'.tr(),
+              //     'comment success description'.tr());
+              _onRefresh();
             } else {
               setState(() => _isSomethingChanging = false);
               openDialog(context, 'Comment posting error!', 'Please try again');
@@ -63,9 +70,6 @@ class _CommentsPageState extends State<CommentsPage> {
       });
     }
   }
-
-
-
 
   @override
   void initState() {
@@ -230,7 +234,7 @@ class _CommentsPageState extends State<CommentsPage> {
       itemBuilder: (BuildContext context, int index) {
         CommentModel d = snap[index];
         return Container(
-              child: Row(
+          child: Row(
             children: <Widget>[
               Container(
                 alignment: Alignment.bottomLeft,
@@ -275,23 +279,23 @@ class _CommentsPageState extends State<CommentsPage> {
                                         Theme.of(context).colorScheme.primary,
                                     fontWeight: FontWeight.w600),
                               ),
-
                               _menuPopUp(d),
                             ],
                           ),
                           SizedBox(
                             height: 5,
                           ),
-
                           _isCommentFlagged(d.id)
-                          ? Container(child: Text('comment flagged').tr(),)
-                          : HtmlBody(
+                              ? Container(
+                                  child: Text('comment flagged').tr(),
+                                )
+                              : HtmlBody(
                                   content: d.content!,
                                   isVideoEnabled: true,
                                   isimageEnabled: true,
                                   isIframeVideoEnabled: true,
                                   textPadding: 0.0,
-                            ),
+                                ),
                         ],
                       ),
                     ),
@@ -324,49 +328,49 @@ class _CommentsPageState extends State<CommentsPage> {
         ),
         itemBuilder: (BuildContext context) {
           return <PopupMenuItem>[
-            
-
             _isCommentFlagged(d.id)
-            ? PopupMenuItem(
-              child: Text('unflag comment').tr(),
-              value: 'unflag',
-            )
-            : PopupMenuItem(
-              child: Text('flag comment').tr(),
-              value: 'flag',
-            ),
+                ? PopupMenuItem(
+                    child: Text('unflag comment').tr(),
+                    value: 'unflag',
+                  )
+                : PopupMenuItem(
+                    child: Text('flag comment').tr(),
+                    value: 'flag',
+                  ),
             PopupMenuItem(
               child: Text('report').tr(),
               value: 'report',
             )
           ];
         },
-        onSelected: (dynamic value) async{
+        onSelected: (dynamic value) async {
           if (value == 'flag') {
-            await context.read<CommentsBloc>().addToFlagList(context, widget.categoryId, widget.postId!, d.id!);
+            await context.read<CommentsBloc>().addToFlagList(
+                context, widget.categoryId, widget.postId!, d.id!);
             _onRefresh();
-          }else if (value == 'unflag') {
-            await context.read<CommentsBloc>().removeFromFlagList(context, widget.categoryId, widget.postId!, d.id!);
+          } else if (value == 'unflag') {
+            await context.read<CommentsBloc>().removeFromFlagList(
+                context, widget.categoryId, widget.postId!, d.id!);
             _onRefresh();
-          }else if (value == 'report') {
+          } else if (value == 'report') {
             final UserBloc ub = Provider.of<UserBloc>(context, listen: false);
-            if(ub.isSignedIn == true && ub.name != null){
-              AppService().sendCommentReportEmail(context, widget.postTitle, d.content!, widget.postLink, ub.name!);
-            }else{
-              AppService().sendCommentReportEmail(context, widget.postTitle, d.content!, widget.postLink, 'An Anonymous User');
+            if (ub.isSignedIn == true && ub.name != null) {
+              AppService().sendCommentReportEmail(context, widget.postTitle,
+                  d.content!, widget.postLink, ub.name!);
+            } else {
+              AppService().sendCommentReportEmail(context, widget.postTitle,
+                  d.content!, widget.postLink, 'An Anonymous User');
             }
-            
           }
         });
   }
 
-
-  bool _isCommentFlagged (int? commentId){
+  bool _isCommentFlagged(int? commentId) {
     final cb = context.read<CommentsBloc>();
     final flagId = "${widget.categoryId}-${widget.postId}-$commentId";
-    if(cb.flagList.contains(flagId)){
+    if (cb.flagList.contains(flagId)) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
