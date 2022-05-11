@@ -1,0 +1,101 @@
+{
+
+    "welcome to" : "Chào mừng đến",
+    "login to continue": "Đăng nhập để tiếp tuc",
+    "welcome-intro": "Khám phá những tin tức và sự kiện mới nhất đang diễn ra trên thế giới trong vài phút. Đăng ký và nhận thông báo về tất cả các bài viết của chúng tôi và chia sẻ chúng với bạn bè của bạn ..",
+    "skip": "Bỏ qua",
+
+    "don't have an account?" : "Bạn không có tài khoản?",
+    "create" : "Tạo",
+    "create account" : "Tạo tài khoản",
+    "login" : "Đăng nhập",
+    "login to access all features" : "Đăng nhập để sử dụng chức năng",
+    "follow the simple steps": "Hãy làm theo bước này",
+    "already have an account?": "Bạn đã có tài khoản?",
+
+    "search contents" : "Tìm kiếm tin tức",
+    "popular contents" : "Tin phổ biến",
+    "recent contents" : "Tin mới nhất",
+    "view all" : "Xem tất cả",
+
+    "search" : "Tìm kiếm",
+    "search for contents" : "Tìm kiếm tin tức",
+    "recent searches" : "Kết quả tìm kiếm gần đây",
+    "search-description" :  "Bạn chưa tìm kiếm tin tức nào gần đây.\n Hãy thử ngay - Chúng tôi sẽ giúp bạn!",
+    "try again" : "Hãy thử lại!",
+    "categories" : "Danh mục",
+
+    "clear all" : "Xóa toàn bộ",
+    "bookmark is empty" : "Danh sách yêu thích trống !!",
+    "save your favourite contents here" : "Lưu tin tức yêu thích của bạn ở đây",
+    "added to your bookamrk" : "Thêm vào danh sách yêu thích",
+
+    "no categories found": "Không danh mục nào được tìm thấy",
+    "no contents found" : "Không tin tức nào được tìm thấy",
+    "no internet" : "Không có kết nối mạng!",
+    "check your internet connection!" : "Vui lòng kiểm tra kết nối mạng!",
+    "contents you might love" : "Có thể bạn thích",
+    
+    "comments" : "Bình luận",
+    "view comments" : "Xem bình luậN",
+    "write a comment" : "Viết bình luận", 
+    "no comments found" : "Không có bình luận nào",
+    "be the first to comment" : "Hãy là người đầu tiên bình luận",
+    "login to make comments" : "Đăng nhập để bình luận",
+    "comment success title" : "Đã gửi bình luận thành công",
+    "comment success description" : "Bình luận của bạn đã được gửi để xem xét. Bạn sẽ thấy bình luận của mình trong danh sách này sau khi xem xét.\nXin cảm ơn",
+    "you can't delete others comment" : "Bạn không thể xóa bình luận của người khác",
+    "you can't edit others comment" : "Bạn không thể sửa bình luận của người khác",
+    "update comment" : "Cập nhật bình luận",
+
+    "delete" : "Xóa",
+    "update" : "Cập nhật",
+
+    "notifications" : "Thông báo",
+    "notification details" : "Chi tiết thông báo",
+    "no notification title": "Không có thông báo nào\n được tìm thấy!",
+    "no notification description" : "Bạn chưa nhận được bất kỳ thông báo nào. Đảm bảo rằng bạn đã bật thông báo từ cài đặt.",
+
+    "settings": "Cài đặt",
+    "general settings" : "Cài đặt chung",
+    "social settings" : "Cài đặt xã hội",
+    "about app" : "Về ứng dụng",
+    "dark mode" : "Chế độ tối",
+    "get notifications" : "Nhận thông báo",
+    "contact us" : "Liên lạc",
+    "rate this app" : "Đánh giá ứng dụng",
+    "licence" : "Giấy phép",
+    "privacy policy" : "Điều khoản bảo mật",
+    "about us" : "Về chúng tôi",
+    "logout" : "Đăng xuất",
+    "our website" : "Trang web chúng tôi",
+    "facebook page" : "Trang Facebook",
+    "youtube channel" : "Kênh Youtube",
+
+    "logout title" : "Đăng xuất khỏi ứng dụng?",
+    "logout description" : "Bạn có thực sự muốn đăng xuất khỏi ứng dụng không? Bạn sẽ mất tất cả dữ liệu đã lưu của mình. Tiếp tục?",
+
+    "language" : "Ngôn ngữ",
+    "select language" : "Chọn ngôn ngữ",
+
+    "explore" : "Khám phá",
+    "videos" : "Videos",
+    "video contents": "Nội dung Video",
+    "twitter": "Twitter",
+    "bookmark": "Yêu thích",
+    "bookmarks": "Yêu thích",
+
+    "clear all notification-dialog": "Bạn có muốn xóa tất cả dữ liệu thông báo không?",
+    "clear all bookmark-dialog": "Bạn có muốn xóa tất cả các bài báo đã lưu không?",
+
+    "accept terms": "Chấp nhận các điều khoản & điều kiện",
+    "flag comment" : "Gắn thẻ bình luận này",
+    "unflag comment" : "Bỏ gắn thẻ bình luận này",
+    "report" : "Báo cáo",
+    "report-info" : "Báo cáo của bạn đã được gửi thành công đến các quản trị viên",
+    "comment flagged" : "Bình luận này đã được gắn cờ!"
+    
+
+
+
+}

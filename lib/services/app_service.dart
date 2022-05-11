@@ -118,24 +118,6 @@ class AppService {
     }
   }
 
-
-
-  Future launchAppReview(context) async {
-    final SettingsBloc sb = Provider.of<SettingsBloc>(context, listen: false);
-    LaunchReview.launch(
-        androidAppId: sb.packageName,
-        iOSAppId: Config.iOSAppID,
-        writeReview: false);
-    if (Platform.isIOS) {
-      if (Config.iOSAppID == '000000') {
-        openToast1(context, 'The iOS version is not available on the AppStore yet');
-      }
-    }
-  }
-
-
-
-
   static bool isDirectionRTL(BuildContext context) {
     return intl.Bidi.isRtlLanguage(Localizations.localeOf(context).languageCode);
   }
