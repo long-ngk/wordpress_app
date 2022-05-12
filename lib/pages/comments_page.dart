@@ -18,6 +18,9 @@ import 'package:wordpress_app/utils/next_screen.dart';
 import 'package:wordpress_app/utils/snacbar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:wordpress_app/widgets/html_body.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import '../utils/cached_image.dart';
+
 
 class CommentsPage extends StatefulWidget {
   final int categoryId;
@@ -240,15 +243,18 @@ class _CommentsPageState extends State<CommentsPage> {
                 alignment: Alignment.bottomLeft,
                 child: CircleAvatar(
                   radius: 25,
-                  backgroundColor: _getRandomColor(),
-                  child: Text(
-                    d.author![0].toUpperCase(),
-                    style: TextStyle(
-                        fontSize: 22,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  //backgroundImage: CachedNetworkImageProvider(d[index].avatar),
+                   child: ClipRRect(
+                        child: Image.network(d.avatar!),
+                        borderRadius: BorderRadius.circular(50.0),
+                    ),
+                  // backgroundColor: _getRandomColor(),
+                  // child: Text(
+                  //   d.author![0].toUpperCase(),
+                  //   style: TextStyle(
+                  //       fontSize: 22,
+                  //       color: Colors.white,
+                  //       fontWeight: FontWeight.w500),
+                  // ), 
                 ),
               ),
               Expanded(
