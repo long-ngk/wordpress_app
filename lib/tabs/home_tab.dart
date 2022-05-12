@@ -34,16 +34,16 @@ class _HomeTabState extends State<HomeTab> with AutomaticKeepAliveClientMixin, T
       text: "explore".tr(),
     ),
     Tab(
-      text: WpConfig.selectedCategories['1'][1],
+      text: (WpConfig.selectedCategories['1'][1] as String).tr(),
     ),
     Tab(
-      text: WpConfig.selectedCategories['2'][1],
+      text: (WpConfig.selectedCategories['2'][1] as String).tr(),
     ),
     Tab(
-      text: WpConfig.selectedCategories['3'][1],
+      text: (WpConfig.selectedCategories['3'][1] as String).tr(),
     ),
     Tab(
-      text: WpConfig.selectedCategories['4'][1],
+      text: (WpConfig.selectedCategories['4'][1] as String).tr(),
     ),
   ];
 
