@@ -7,24 +7,26 @@ class CustomCacheImageWithDarkFilterFull extends StatelessWidget {
   final bool? circularShape;
   final bool? allPosition;
   const CustomCacheImageWithDarkFilterFull(
-      {Key? key, required this.imageUrl, required this.radius, this.circularShape, this.allPosition})
+      {Key? key,
+      required this.imageUrl,
+      required this.radius,
+      this.circularShape,
+      this.allPosition})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(radius),
-        topRight: Radius.circular(radius),
-        bottomLeft: Radius.circular(circularShape == false ? 0 : radius),
-        bottomRight: Radius.circular(circularShape == false ? 0 : radius)
-
-      ),
+          topLeft: Radius.circular(radius),
+          topRight: Radius.circular(radius),
+          bottomLeft: Radius.circular(circularShape == false ? 0 : radius),
+          bottomRight: Radius.circular(circularShape == false ? 0 : radius)),
       child: Stack(
         children: [
           Container(
             height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
+            width: MediaQuery.of(context).size.width,
             child: CachedNetworkImage(
               imageUrl: imageUrl,
               fit: BoxFit.cover,
@@ -36,24 +38,22 @@ class CustomCacheImageWithDarkFilterFull extends StatelessWidget {
               ),
             ),
           ),
-
           Container(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        const Color(0xaa000000),
-                        const Color(0xaa000000),
-                        const Color(0xaa000000),
-                        const Color(0xaa000000),
-                      ],
-                    ),
-                  ),
-                ),
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  const Color(0xaa000000),
+                  const Color(0xaa000000),
+                  const Color(0xaa000000),
+                  const Color(0xaa000000),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -66,24 +66,26 @@ class CustomCacheImageWithDarkFilterTopBottom extends StatelessWidget {
   final bool? circularShape;
   final bool? allPosition;
   const CustomCacheImageWithDarkFilterTopBottom(
-      {Key? key, required this.imageUrl, required this.radius, this.circularShape, this.allPosition})
+      {Key? key,
+      required this.imageUrl,
+      required this.radius,
+      this.circularShape,
+      this.allPosition})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(radius),
-        topRight: Radius.circular(radius),
-        bottomLeft: Radius.circular(circularShape == false ? 0 : radius),
-        bottomRight: Radius.circular(circularShape == false ? 0 : radius)
-
-      ),
+          topLeft: Radius.circular(radius),
+          topRight: Radius.circular(radius),
+          bottomLeft: Radius.circular(circularShape == false ? 0 : radius),
+          bottomRight: Radius.circular(circularShape == false ? 0 : radius)),
       child: Stack(
         children: [
           Container(
             height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
+            width: MediaQuery.of(context).size.width,
             child: CachedNetworkImage(
               imageUrl: imageUrl,
               fit: BoxFit.cover,
@@ -95,32 +97,27 @@ class CustomCacheImageWithDarkFilterTopBottom extends StatelessWidget {
               ),
             ),
           ),
-
           Container(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        const Color(0xcc000000),
-                        const Color(0x00000000),
-                        const Color(0x00000000),
-                        const Color(0xcc000000),
-                      ],
-                    ),
-                  ),
-                ),
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  const Color(0xcc000000),
+                  const Color(0x00000000),
+                  const Color(0x00000000),
+                  const Color(0xcc000000),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 }
-
-
-
-
 
 class CustomCacheImageWithDarkFilterBottom extends StatelessWidget {
   final String? imageUrl;
@@ -128,24 +125,26 @@ class CustomCacheImageWithDarkFilterBottom extends StatelessWidget {
   final bool? circularShape;
   final bool? allPosition;
   const CustomCacheImageWithDarkFilterBottom(
-      {Key? key, required this.imageUrl, required this.radius, this.circularShape, this.allPosition})
+      {Key? key,
+      required this.imageUrl,
+      required this.radius,
+      this.circularShape,
+      this.allPosition})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(radius),
-        topRight: Radius.circular(radius),
-        bottomLeft: Radius.circular(circularShape == false ? 0 : radius),
-        bottomRight: Radius.circular(circularShape == false ? 0 : radius)
-
-      ),
+          topLeft: Radius.circular(radius),
+          topRight: Radius.circular(radius),
+          bottomLeft: Radius.circular(circularShape == false ? 0 : radius),
+          bottomRight: Radius.circular(circularShape == false ? 0 : radius)),
       child: Stack(
         children: [
           Container(
             height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
+            width: MediaQuery.of(context).size.width,
             child: CachedNetworkImage(
               imageUrl: imageUrl!,
               fit: BoxFit.cover,
@@ -157,23 +156,22 @@ class CustomCacheImageWithDarkFilterBottom extends StatelessWidget {
               ),
             ),
           ),
-
           Container(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        const Color(0x00000000),
-                        const Color(0x00000000),
-                        const Color(0x00000000),
-                        const Color(0xcc000000),
-                      ],
-                    ),
-                  ),
-                ),
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  const Color(0x00000000),
+                  const Color(0x00000000),
+                  const Color(0x00000000),
+                  const Color(0xcc000000),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

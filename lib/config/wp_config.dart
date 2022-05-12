@@ -2,9 +2,9 @@
 class WpConfig {
   static const String websiteUrl = "http://192.168.1.94:81/wordpress";
 
-  static const int featuredTagID = 11;
+  static const int featuredTagID = 14;
 
-  static const int videoTagId = 12;
+  static const int videoTagId = 15;
 
   // Hometab 4 categories
   // -- 'Serial Number' : [Category Id, 'Category Name'] -- Length should be 4.

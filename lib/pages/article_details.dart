@@ -133,7 +133,8 @@ class _ArticleDetailsState extends State<ArticleDetails> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Padding(
-                                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(20, 20, 20, 0),
                                 child: Column(
                                   children: [
                                     Row(

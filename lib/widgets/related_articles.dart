@@ -28,7 +28,8 @@ class _RelatedArticlesState extends State<RelatedArticles> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    data = WordPressService().fetchPostsByCategoryIdExceptPostId(widget.postId, widget.catId, 5);
+    data = WordPressService()
+        .fetchPostsByCategoryIdExceptPostId(widget.postId, widget.catId, 5);
   }
 
   @override
@@ -37,26 +38,25 @@ class _RelatedArticlesState extends State<RelatedArticles> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Row(
-                children: [
-                  verticalLine(context, 20),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text(
-                    'contents you might love',
-                    style: TextStyle(
-                      letterSpacing: -0.7,
-                      wordSpacing: 1,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ).tr(),
-                ],
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Row(
+            children: [
+              verticalLine(context, 20),
+              SizedBox(
+                width: 5,
               ),
-            ),
-          
+              Text(
+                'contents you might love',
+                style: TextStyle(
+                  letterSpacing: -0.7,
+                  wordSpacing: 1,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ).tr(),
+            ],
+          ),
+        ),
         SizedBox(
           height: 15,
         ),
@@ -133,7 +133,7 @@ class _LoadingWidget extends StatelessWidget {
     return Container(
       alignment: Alignment.centerLeft,
       margin: EdgeInsets.only(right: 20, left: 20),
-      child: LoadingIndicatorWidget()
+      child: LoadingIndicatorWidget(),
     );
   }
 }

@@ -19,8 +19,6 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
-
-
   void _onSkipPressed() async {
     final UserBloc ub = Provider.of<UserBloc>(context, listen: false);
     await ub.loginAsGuestUser().then((_) {
@@ -64,63 +62,60 @@ class _WelcomePageState extends State<WelcomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Flexible(
-                  flex: 4,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Image(
-                        image: AssetImage(Config.splash),
-                        height: 130,
-                      ),
-                      SizedBox(
-                        height: 40,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'welcome to',
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w300,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .secondary),
-                              ).tr(),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Image(
-                                image: AssetImage(Config.logo),
-                                height: 40,
-                                width: 160,
-                              )
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 35, right: 35, top: 15),
-                            child: Text(
-                              'welcome-intro',
-                              textAlign: TextAlign.center,
+                flex: 4,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image(
+                      image: AssetImage(Config.splash),
+                      height: 130,
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'welcome to',
                               style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w400,
-                                  color: Theme.of(context).colorScheme.secondary),
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color:
+                                      Theme.of(context).colorScheme.secondary),
                             ).tr(),
-                          )
-                        ],
-                      ),
-                    ],
-                  )
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Image(
+                              image: AssetImage(Config.logo),
+                              height: 40,
+                              width: 160,
+                            )
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 35, right: 35, top: 15),
+                          child: Text(
+                            'welcome-intro',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w400,
+                                color: Theme.of(context).colorScheme.secondary),
+                          ).tr(),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ),
-
               Spacer(),
-
               Flexible(
                 flex: 1,
                 child: Column(
@@ -129,12 +124,11 @@ class _WelcomePageState extends State<WelcomePage> {
                       margin: EdgeInsets.only(left: 20, right: 20),
                       width: MediaQuery.of(context).size.width * 0.80,
                       height: 45,
-                      
                       child: TextButton(
                         style: ButtonStyle(
-                          shape: MaterialStateProperty.resolveWith((states) => RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)
-                          )),
+                          shape: MaterialStateProperty.resolveWith((states) =>
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30))),
                           backgroundColor: MaterialStateProperty.resolveWith(
                               (states) => Theme.of(context).primaryColor),
                         ),
@@ -180,19 +174,16 @@ class _WelcomePageState extends State<WelcomePage> {
                                 fontWeight: FontWeight.w500,
                                 color: Theme.of(context).colorScheme.primary),
                           ).tr(),
-                          onPressed: () => nextScreen(context, CreateAccountPage()),
+                          onPressed: () =>
+                              nextScreen(context, CreateAccountPage(),),
                         )
                       ],
                     )
                   ],
                 ),
               ),
-
-
             ],
           ),
-        )
-    );
+        ));
   }
 }
-

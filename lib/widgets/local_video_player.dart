@@ -17,29 +17,27 @@ class _LocalVideoPlayerState extends State<LocalVideoPlayer> {
   @override
   void initState() {
     super.initState();
-    BetterPlayerDataSource betterPlayerDataSource = BetterPlayerDataSource(BetterPlayerDataSourceType.network, widget.videoUrl);
+    BetterPlayerDataSource betterPlayerDataSource = BetterPlayerDataSource(
+        BetterPlayerDataSourceType.network, widget.videoUrl);
     _betterPlayerController = BetterPlayerController(
-      
       BetterPlayerConfiguration(
-        deviceOrientationsAfterFullScreen: const [DeviceOrientation.portraitUp],
-        aspectRatio: 16/9,
-        controlsConfiguration: BetterPlayerControlsConfiguration(
-          enableSkips: false, 
-          enableOverflowMenu: false
-        )
-      ),
+          deviceOrientationsAfterFullScreen: const [
+            DeviceOrientation.portraitUp
+          ],
+          aspectRatio: 16 / 9,
+          controlsConfiguration: BetterPlayerControlsConfiguration(
+              enableSkips: false, enableOverflowMenu: false)),
       betterPlayerDataSource: betterPlayerDataSource,
-      
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-        aspectRatio: 16 / 9,
-        child: BetterPlayer(
-          controller: _betterPlayerController,
-        )
+      aspectRatio: 16 / 9,
+      child: BetterPlayer(
+        controller: _betterPlayerController,
+      ),
     );
   }
 }

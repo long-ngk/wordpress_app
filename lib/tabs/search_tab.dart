@@ -19,7 +19,8 @@ class SearchTab extends StatefulWidget {
   _SearchTabState createState() => _SearchTabState();
 }
 
-class _SearchTabState extends State<SearchTab> with AutomaticKeepAliveClientMixin {
+class _SearchTabState extends State<SearchTab>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -157,7 +158,6 @@ class _CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final String _heroTag = 'category${d.id}';
     final String _thumbnail = WpConfig.categoryThumbnails.keys.contains(d.id)
         ? WpConfig.categoryThumbnails[d.id]

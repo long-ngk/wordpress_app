@@ -8,28 +8,25 @@ import 'package:wordpress_app/pages/video_article_details.dart';
 import 'package:wordpress_app/widgets/loading_indicator_widget.dart';
 
 class PostNotificationDetails extends StatefulWidget {
-
   final int postID;
   PostNotificationDetails({Key? key, required this.postID}) : super(key: key);
 
   @override
-  _PostNotificationDetailsState createState() => _PostNotificationDetailsState();
+  _PostNotificationDetailsState createState() =>
+      _PostNotificationDetailsState();
 }
 
 class _PostNotificationDetailsState extends State<PostNotificationDetails> {
-
-  
-
   Future<Article?> fetchPostsByCategoryId() async {
     Article? article;
-    var response = await http.get(Uri.parse("${WpConfig.websiteUrl}/wp-json/wp/v2/posts/${widget.postID}"));
+    var response = await http.get(Uri.parse(
+        "${WpConfig.websiteUrl}/wp-json/wp/v2/posts/${widget.postID}"));
     var decodedData = jsonDecode(response.body);
     if (response.statusCode == 200) {
       article = Article.fromJson(decodedData);
     }
     return article;
   }
-
 
   late Future _fetchData;
 
@@ -39,27 +36,30 @@ class _PostNotificationDetailsState extends State<PostNotificationDetails> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: _fetchData,
-      builder: (context, AsyncSnapshot snap){
-        if(snap.connectionState == ConnectionState.active || snap.connectionState == ConnectionState.waiting){
+      builder: (context, AsyncSnapshot snap) {
+        if (snap.connectionState == ConnectionState.active ||
+            snap.connectionState == ConnectionState.waiting) {
           return Scaffold(
             appBar: AppBar(),
             body: Center(child: LoadingIndicatorWidget()),
           );
-        }else if (snap.hasError){
+        } else if (snap.hasError) {
           return Scaffold(
             appBar: AppBar(),
-            body: Center(child: Text('Something is wrong. Please try again!'),),
+            body: Center(
+              child: Text('Something is wrong. Please try again!'),
+            ),
           );
-        }else{
+        } else {
           Article article = snap.data;
-          if (article.tags == null || !article.tags!.contains(WpConfig.videoTagId)){
+          if (article.tags == null ||
+              !article.tags!.contains(WpConfig.videoTagId)) {
             return ArticleDetails(articleData: article);
-          }else{
+          } else {
             return VideoArticleDeatils(article: article);
           }
         }

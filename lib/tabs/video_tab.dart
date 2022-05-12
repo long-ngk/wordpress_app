@@ -19,8 +19,8 @@ class VideoTab extends StatefulWidget {
   _VideoTabState createState() => _VideoTabState();
 }
 
-class _VideoTabState extends State<VideoTab> with AutomaticKeepAliveClientMixin {
-
+class _VideoTabState extends State<VideoTab>
+    with AutomaticKeepAliveClientMixin {
   List<Article> _articles = [];
   ScrollController? _controller;
   int _page = 1;
@@ -31,7 +31,8 @@ class _VideoTabState extends State<VideoTab> with AutomaticKeepAliveClientMixin 
 
   @override
   void initState() {
-    _controller = ScrollController(initialScrollOffset: 0.0, keepScrollOffset: true);
+    _controller =
+        ScrollController(initialScrollOffset: 0.0, keepScrollOffset: true);
     _controller!.addListener(_scrollListener);
     _fetchArticles(1);
     _hasData = true;
@@ -46,8 +47,8 @@ class _VideoTabState extends State<VideoTab> with AutomaticKeepAliveClientMixin 
 
   Future _fetchArticles(int page) async {
     try {
-      var response = await http
-          .get(Uri.parse("${WpConfig.websiteUrl}/wp-json/wp/v2/posts?"
+      var response =
+          await http.get(Uri.parse("${WpConfig.websiteUrl}/wp-json/wp/v2/posts?"
                   'page=$_page' +
               '&tags=${WpConfig.videoTagId}' +
               '&per_page=$_postAmount'));

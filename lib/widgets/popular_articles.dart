@@ -66,7 +66,11 @@ class PopularArticles extends StatelessWidget {
                   return _NoContents();
                 }
               } else {
-                return Card1(article: pb.articles[index], heroTag: 'popular${pb.articles[index].id}', scaffoldKey: scaffoldKey,);
+                return Card1(
+                  article: pb.articles[index],
+                  heroTag: 'popular${pb.articles[index].id}',
+                  scaffoldKey: scaffoldKey,
+                );
               }
             },
           )
@@ -75,8 +79,6 @@ class PopularArticles extends StatelessWidget {
     );
   }
 }
-
-
 
 class _NoContents extends StatelessWidget {
   const _NoContents({

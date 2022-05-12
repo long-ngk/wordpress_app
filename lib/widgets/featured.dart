@@ -14,7 +14,6 @@ class Featured extends StatefulWidget {
 }
 
 class _FeaturedState extends State<Featured> {
-  
   @override
   Widget build(BuildContext context) {
     final fb = context.watch<FeaturedBloc>();
@@ -28,16 +27,19 @@ class _FeaturedState extends State<Featured> {
             controller: PageController(initialPage: 0),
             scrollDirection: Axis.horizontal,
             itemCount: fb.articles.isEmpty ? 1 : fb.articles.length,
-            onPageChanged: (int pageIndex) => context.read<FeaturedBloc>().saveDotIndex(pageIndex),
-            itemBuilder: (BuildContext context, int index){
+            onPageChanged: (int pageIndex) =>
+                context.read<FeaturedBloc>().saveDotIndex(pageIndex),
+            itemBuilder: (BuildContext context, int index) {
               if (fb.articles.isEmpty) {
-                if(fb.hasData){
+                if (fb.hasData) {
                   return _LoadingWidget();
-                }else{
+                } else {
                   return _NoContentsWidget();
                 }
               }
-              return FeatureCard(article: fb.articles[index], heroTag: 'featured${fb.articles[index].id}');
+              return FeatureCard(
+                  article: fb.articles[index],
+                  heroTag: 'featured${fb.articles[index].id}');
             },
           ),
         ),
@@ -75,7 +77,8 @@ class _NoContentsWidget extends StatelessWidget {
       margin: EdgeInsets.all(15),
       alignment: Alignment.center,
       decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.onBackground, borderRadius: BorderRadius.circular(5)),
+          color: Theme.of(context).colorScheme.onBackground,
+          borderRadius: BorderRadius.circular(5)),
       child: Text('no contents found').tr(),
     );
   }
@@ -94,4 +97,3 @@ class _LoadingWidget extends StatelessWidget {
     );
   }
 }
-

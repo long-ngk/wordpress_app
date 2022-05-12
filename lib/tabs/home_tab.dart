@@ -23,13 +23,12 @@ class HomeTab extends StatefulWidget {
   _HomeTabState createState() => _HomeTabState();
 }
 
-class _HomeTabState extends State<HomeTab> with AutomaticKeepAliveClientMixin, TickerProviderStateMixin {
-
-
-  late TabController _tabController ;
+class _HomeTabState extends State<HomeTab>
+    with AutomaticKeepAliveClientMixin, TickerProviderStateMixin {
+  late TabController _tabController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-    List<Tab> _tabs = [
+  List<Tab> _tabs = [
     Tab(
       text: "explore".tr(),
     ),
@@ -47,11 +46,9 @@ class _HomeTabState extends State<HomeTab> with AutomaticKeepAliveClientMixin, T
     ),
   ];
 
-
-
-  _fetchData () async{
-    await AppService().checkInternet().then((bool? hasInternet){
-      if(hasInternet != null && hasInternet == true){
+  _fetchData() async {
+    await AppService().checkInternet().then((bool? hasInternet) {
+      if (hasInternet != null && hasInternet == true) {
         context.read<FeaturedBloc>().fetchData();
         context.read<PopularArticlesBloc>().fetchData();
         context.read<LatestArticlesBloc>().fetchData();
@@ -59,17 +56,16 @@ class _HomeTabState extends State<HomeTab> with AutomaticKeepAliveClientMixin, T
     });
   }
 
-
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: _tabs.length, initialIndex: 0, vsync: this);
-    _tabController.addListener(() { 
+    _tabController =
+        TabController(length: _tabs.length, initialIndex: 0, vsync: this);
+    _tabController.addListener(() {
       context.read<TabIndexBloc>().setTabIndex(_tabController.index);
     });
     _fetchData();
   }
-
 
   @override
   void dispose() {
@@ -77,27 +73,25 @@ class _HomeTabState extends State<HomeTab> with AutomaticKeepAliveClientMixin, T
     super.dispose();
   }
 
-
-
-  
-
-  
-
   @override
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-
-        drawer: CustomDrawer(),
-        key: scaffoldKey,
-        body: NestedScrollView(
-            headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+      drawer: CustomDrawer(),
+      key: scaffoldKey,
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             new SliverAppBar(
               automaticallyImplyLeading: false,
               centerTitle: false,
               titleSpacing: 0,
-              title: Image(image: AssetImage(Config.logo,), height: 19,),
+              title: Image(
+                image: AssetImage(
+                  Config.logo,
+                ),
+                height: 19,
+              ),
               leading: IconButton(
                 icon: Icon(
                   Feather.menu,
@@ -118,18 +112,16 @@ class _HomeTabState extends State<HomeTab> with AutomaticKeepAliveClientMixin, T
                     nextScreen(context, SearchPage());
                   },
                 ),
-
                 SizedBox(width: 3),
-
                 IconButton(
-                padding: EdgeInsets.only(right: 8),
-                constraints: BoxConstraints(),
-                icon: Icon(
-                  AntDesign.bells,
-                  size: 20,
+                  padding: EdgeInsets.only(right: 8),
+                  constraints: BoxConstraints(),
+                  icon: Icon(
+                    AntDesign.bells,
+                    size: 20,
+                  ),
+                  onPressed: () => nextScreen(context, Notifications()),
                 ),
-                onPressed: () => nextScreen(context, Notifications()),
-              ),
                 SizedBox(
                   width: 10,
                 )
@@ -156,8 +148,7 @@ class _HomeTabState extends State<HomeTab> with AutomaticKeepAliveClientMixin, T
               ),
             ),
           ];
-        }, 
-        
+        },
         body: Builder(
           builder: (BuildContext context) {
             final innerScrollController = PrimaryScrollController.of(context);
@@ -167,12 +158,11 @@ class _HomeTabState extends State<HomeTab> with AutomaticKeepAliveClientMixin, T
               scaffoldKey: scaffoldKey,
             );
           },
-        )
+        ),
       ),
-      );
+    );
   }
 
   @override
   bool get wantKeepAlive => true;
 }
-

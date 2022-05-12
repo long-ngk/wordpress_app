@@ -4,15 +4,15 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:wordpress_app/services/bookmark_service.dart';
 
 class BookmarkIcon extends StatelessWidget {
-  const BookmarkIcon({
-    Key? key,
-    required this.bookmarkedList,
-    required this.article,
-    required this.scaffoldKey,
-    required this.iconSize,
-    this.iconColor, 
-    this.normalIconColor
-  }) : super(key: key);
+  const BookmarkIcon(
+      {Key? key,
+      required this.bookmarkedList,
+      required this.article,
+      required this.scaffoldKey,
+      required this.iconSize,
+      this.iconColor,
+      this.normalIconColor})
+      : super(key: key);
 
   final Box bookmarkedList;
   final Article? article;
@@ -27,15 +27,20 @@ class BookmarkIcon extends StatelessWidget {
       valueListenable: bookmarkedList.listenable(),
       builder: (context, dynamic value, Widget? child) {
         return IconButton(
-          iconSize: iconSize,
-          padding: EdgeInsets.all(0),
-          constraints: BoxConstraints(),
-          alignment: Alignment.centerRight,
+            iconSize: iconSize,
+            padding: EdgeInsets.all(0),
+            constraints: BoxConstraints(),
+            alignment: Alignment.centerRight,
             icon: bookmarkedList.keys.contains(article!.id)
-                ? Icon(Icons.favorite, color: iconColor == null? Colors.pinkAccent : iconColor)
-                : Icon(Icons.favorite_border, color: normalIconColor == null ? Colors.grey : normalIconColor),
+                ? Icon(Icons.favorite,
+                    color: iconColor == null ? Colors.pinkAccent : iconColor)
+                : Icon(Icons.favorite_border,
+                    color: normalIconColor == null
+                        ? Colors.grey
+                        : normalIconColor),
             onPressed: () {
-              BookmarkService().handleBookmarkIconPressed(article!, scaffoldKey);
+              BookmarkService()
+                  .handleBookmarkIconPressed(article!, scaffoldKey);
             });
       },
     );

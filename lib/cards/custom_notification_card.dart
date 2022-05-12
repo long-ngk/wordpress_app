@@ -6,7 +6,9 @@ import 'package:wordpress_app/services/notification_service.dart';
 import 'package:wordpress_app/utils/next_screen.dart';
 
 class CustomNotificationCard extends StatelessWidget {
-  const CustomNotificationCard({Key? key, required this.notificationModel, required this.timeAgo}) : super(key: key);
+  const CustomNotificationCard(
+      {Key? key, required this.notificationModel, required this.timeAgo})
+      : super(key: key);
 
   final NotificationModel notificationModel;
   final String timeAgo;
@@ -45,7 +47,8 @@ class CustomNotificationCard extends StatelessWidget {
                         Icons.close,
                         size: 20,
                       ),
-                      onPressed: () => NotificationService().deleteNotificationData(notificationModel.timestamp))
+                      onPressed: () => NotificationService()
+                          .deleteNotificationData(notificationModel.timestamp))
                 ],
               ),
               SizedBox(

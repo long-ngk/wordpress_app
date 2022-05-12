@@ -4,7 +4,6 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:wordpress_app/config/ad_config.dart';
 
 class BannerAdWidget extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() => BannerAdState();
 }

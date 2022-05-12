@@ -6,8 +6,6 @@ import '../models/article.dart';
 import 'package:http/http.dart' as http;
 
 class FeaturedBloc extends ChangeNotifier {
-
-  
   List<Article> _articles = [];
   List<Article> get articles => _articles;
   int _contentAmount = 5;
@@ -22,24 +20,27 @@ class FeaturedBloc extends ChangeNotifier {
     _hasData = true;
     _articles.clear();
     notifyListeners();
-    
+
     var response = WpConfig.blockedCategoryIds.isEmpty
-      ? await http.get(Uri.parse("${WpConfig.websiteUrl}/wp-json/wp/v2/posts?tags=${WpConfig.featuredTagID}&per_page=$_contentAmount"))
-      : await http.get(Uri.parse("${WpConfig.websiteUrl}/wp-json/wp/v2/posts?tags=${WpConfig.featuredTagID}&per_page=$_contentAmount&categories_exclude=" + WpConfig.blockedCategoryIds));
-        
+        ? await http.get(Uri.parse(
+            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?tags=${WpConfig.featuredTagID}&per_page=$_contentAmount"))
+        : await http.get(Uri.parse(
+            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?tags=${WpConfig.featuredTagID}&per_page=$_contentAmount&categories_exclude=" +
+                WpConfig.blockedCategoryIds));
+
     List? decodedData = jsonDecode(response.body);
     if (response.statusCode == 200) {
       _articles = decodedData!.map((m) => Article.fromJson(m)).toList();
-      if(_articles.isEmpty){
+      if (_articles.isEmpty) {
         _hasData = false;
-      } 
-    }else{
+      }
+    } else {
       _hasData = false;
     }
     notifyListeners();
   }
 
-  void saveDotIndex (int newIndex){
+  void saveDotIndex(int newIndex) {
     _dotIndex = newIndex;
     notifyListeners();
   }

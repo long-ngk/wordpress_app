@@ -15,7 +15,7 @@ class _DonePageState extends State<DonePage> {
   @override
   void initState() {
     Future.delayed(Duration(milliseconds: 2000))
-    .then((value) => nextScreenCloseOthers(context, HomePage()));
+        .then((value) => nextScreenCloseOthers(context, HomePage()));
     super.initState();
   }
 

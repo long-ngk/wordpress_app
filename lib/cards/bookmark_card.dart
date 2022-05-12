@@ -15,80 +15,79 @@ class BookmarkCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final String heroTag = 'bookmark${article.id}';
     return InkWell(
-      child: Container(
-          padding: EdgeInsets.all(15),
-          decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.onPrimary,
-              borderRadius: BorderRadius.circular(5)),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
+        child: Container(
+            padding: EdgeInsets.all(15),
+            decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.onPrimary,
+                borderRadius: BorderRadius.circular(5)),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      height: 110,
+                      width: 110,
+                      child: Hero(
+                          tag: heroTag,
+                          child: CustomCacheImage(
+                              imageUrl: article.image, radius: 5)),
+                    ),
+                    VideoIcon(tags: article.tags, iconSize: 40)
+                  ],
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Container(
                     height: 110,
-                    width: 110,
-                    child: Hero(
-                        tag: heroTag,
-                        child:
-                            CustomCacheImage(imageUrl: article.image, radius: 5)),
-                  ),
-
-                  VideoIcon(tags: article.tags, iconSize: 40)
-                ],
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: Container(
-                  height: 110,
-                  padding: EdgeInsets.only(top: 0, bottom: 0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppService.getNormalText(article.title!),
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w500),
-                      ),
-                      Spacer(),
-                      Expanded(
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Icon(
-                                CupertinoIcons.time,
-                                size: 18,
-                                color: Colors.grey,
-                              ),
-                              SizedBox(
-                                width: 3,
-                              ),
-                              Text(article.timeAgo!,
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .secondary)),
-                              Spacer(),
-                              IconButton(
-                                  alignment: Alignment.centerRight,
-                                  icon: Icon(Icons.close, size: 16),
-                                  onPressed: () => BookmarkService()
-                                      .removeFromBookmarkList(article))
-                            ]),
-                      )
-                    ],
+                    padding: EdgeInsets.only(top: 0, bottom: 0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          AppService.getNormalText(article.title!),
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w500),
+                        ),
+                        Spacer(),
+                        Expanded(
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  CupertinoIcons.time,
+                                  size: 18,
+                                  color: Colors.grey,
+                                ),
+                                SizedBox(
+                                  width: 3,
+                                ),
+                                Text(article.timeAgo!,
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary)),
+                                Spacer(),
+                                IconButton(
+                                    alignment: Alignment.centerRight,
+                                    icon: Icon(Icons.close, size: 16),
+                                    onPressed: () => BookmarkService()
+                                        .removeFromBookmarkList(article))
+                              ]),
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          )),
-      onTap: () => navigateToDetailsScreen(context, article, heroTag));
+              ],
+            )),
+        onTap: () => navigateToDetailsScreen(context, article, heroTag));
   }
 }

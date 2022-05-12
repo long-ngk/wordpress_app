@@ -13,14 +13,11 @@ class CommentModel {
     return CommentModel(
       id: json['id'],
       author: json['author_name'],
-      avatar: json['author_avatar_urls']["48"] ?? "https://icon-library.com/images/avatar-icon/avatar-icon-27.jpg",
+      avatar: json['author_avatar_urls']["48"] ??
+          "https://icon-library.com/images/avatar-icon/avatar-icon-27.jpg",
       content: json["content"]["rendered"],
       //date: Jiffy(json["date"]).fromNow(),
       date: Jiffy(json['date']).add(hours: 6).fromNow(),
     );
   }
-
-
-
-  
 }

@@ -39,15 +39,16 @@ class EmptyPageWithIcon extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          description == null ? Container() :
-          Text(
-            description!,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontWeight: FontWeight.w500,
-                color: Colors.grey[600],
-                fontSize: 16),
-          )
+          description == null
+              ? Container()
+              : Text(
+                  description!,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.grey[600],
+                      fontSize: 16),
+                )
         ],
       ),
     );

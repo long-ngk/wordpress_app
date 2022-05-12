@@ -8,32 +8,39 @@ class FullScreenImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(
-      children: [
-        Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: InteractiveViewer(
-            child: CachedNetworkImage(imageUrl: imageUrl, fit: BoxFit.contain,)
-          ),
-        ),
-        SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: InkWell(
-                child: CircleAvatar(
-                  radius: 20,
-                  backgroundColor: Theme.of(context).primaryColor,
-                  child: Icon(Icons.close, color: Colors.white,),
-                ),
-                onTap: () => Navigator.pop(context),
+      body: Stack(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: InteractiveViewer(
+              child: CachedNetworkImage(
+                imageUrl: imageUrl,
+                fit: BoxFit.contain,
               ),
             ),
           ),
-        )
-      ],
-    ));
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: InkWell(
+                  child: CircleAvatar(
+                    radius: 20,
+                    backgroundColor: Theme.of(context).primaryColor,
+                    child: Icon(
+                      Icons.close,
+                      color: Colors.white,
+                    ),
+                  ),
+                  onTap: () => Navigator.pop(context),
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

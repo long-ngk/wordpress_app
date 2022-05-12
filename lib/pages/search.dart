@@ -21,7 +21,6 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-
   var scaffoldKey = GlobalKey<ScaffoldState>();
   var searchFieldCtrl = TextEditingController();
   bool _searchStarted = false;
@@ -43,9 +42,7 @@ class _SearchPageState extends State<SearchPage> {
           padding: EdgeInsets.all(15),
           child: Column(
             children: [
-              _searchStarted == false
-                  ? _suggestionUI()
-                  : _afterSearchUI()
+              _searchStarted == false ? _suggestionUI() : _afterSearchUI()
             ],
           ),
         ),
@@ -123,19 +120,20 @@ class _SearchPageState extends State<SearchPage> {
                   }
 
                   return ListView.separated(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: snapshot.data.length,
-                      separatorBuilder: (context, index) => SizedBox(
-                            height: 15,
-                          ),
-                      itemBuilder: (BuildContext context, int index) {
-                        Article article = snapshot.data[index];
-                        return Card6(
-                            article: article,
-                            heroTag: 'search${article.id}',
-                            scaffoldKey: scaffoldKey);
-                      });
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: snapshot.data.length,
+                    separatorBuilder: (context, index) => SizedBox(
+                      height: 15,
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      Article article = snapshot.data[index];
+                      return Card6(
+                          article: article,
+                          heroTag: 'search${article.id}',
+                          scaffoldKey: scaffoldKey);
+                    },
+                  );
               }
             },
           ),
@@ -161,7 +159,8 @@ class _SearchPageState extends State<SearchPage> {
                 ),
                 ValueListenableBuilder(
                   valueListenable: recentSearchs.listenable(),
-                  builder: (BuildContext context, dynamic value, Widget? child) {
+                  builder:
+                      (BuildContext context, dynamic value, Widget? child) {
                     return ListView.separated(
                       itemCount: recentSearchs.length,
                       physics: NeverScrollableScrollPhysics(),
@@ -246,28 +245,29 @@ class _EmptySearchAnimation extends StatelessWidget {
               alignment: Alignment.center,
               fit: BoxFit.contain,
               animation: "search",
-              color: Theme.of(context).primaryColor.withOpacity(0.6),  
-              
+              color: Theme.of(context).primaryColor.withOpacity(0.6),
             ),
           ),
         ),
-
-        Text('search for contents', style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.w600,
-          letterSpacing: -0.7,
-          wordSpacing: 1
-        ),).tr(),
-
-        SizedBox(height: 10,),
-
-        Text('search-description', 
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          color: Theme.of(context).colorScheme.secondary
-        ),).tr()
+        Text(
+          'search for contents',
+          style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              letterSpacing: -0.7,
+              wordSpacing: 1),
+        ).tr(),
+        SizedBox(
+          height: 10,
+        ),
+        Text(
+          'search-description',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: Theme.of(context).colorScheme.secondary),
+        ).tr()
       ],
     );
   }

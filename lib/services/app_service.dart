@@ -16,8 +16,6 @@ import 'package:intl/intl.dart' as intl;
 import 'package:wordpress_app/utils/toast.dart';
 
 class AppService {
-
-
   Future<bool?> checkInternet() async {
     bool? internet;
     try {
@@ -38,14 +36,10 @@ class AppService {
     hive.add(newSerchItem);
   }
 
-
-
   Future removeFromRecentSearchList(int selectedIndex) async {
     final hive = await Hive.openBox(Constants.resentSearchTag);
     hive.deleteAt(selectedIndex);
   }
-
-
 
   Future openLink(context, String url) async {
     if (await urlLauncher.canLaunch(url)) {
@@ -55,15 +49,14 @@ class AppService {
     }
   }
 
-  
-
   Future openEmailSupport(context) async {
     //await urlLauncher.launch('mailto:${Config.supportEmail}?subject=About ${Config.appName} App&body=');
 
     final Uri params = Uri(
       scheme: 'mailto',
       path: Config.supportEmail,
-      query: 'subject=About ${Config.appName}&body=', //add subject and body here
+      query:
+          'subject=About ${Config.appName}&body=', //add subject and body here
     );
 
     var url = params.toString();
@@ -74,15 +67,16 @@ class AppService {
     }
   }
 
-
-  Future sendCommentReportEmail(context, String postTitle, String comment, String postLink, String userName) async {
+  Future sendCommentReportEmail(context, String postTitle, String comment,
+      String postLink, String userName) async {
     //await urlLauncher.launch('mailto:${Config.supportEmail}?subject=About ${Config.appName} App&body=');
 
     final String _formattedComment = AppService.getNormalText(comment);
     final Uri params = Uri(
       scheme: 'mailto',
       path: Config.supportEmail,
-      query: 'subject=${Config.appName} - Comment Report&body=$userName has reported on a comment on $postTitle.\nReported Comment: $_formattedComment\nPost Link: $postLink', //add subject and body here
+      query:
+          'subject=${Config.appName} - Comment Report&body=$userName has reported on a comment on $postTitle.\nReported Comment: $_formattedComment\nPost Link: $postLink', //add subject and body here
     );
 
     var url = params.toString();
@@ -93,38 +87,36 @@ class AppService {
     }
   }
 
-
-
-
   Future openLinkWithCustomTab(BuildContext context, String url) async {
-    try{
+    try {
       await FlutterWebBrowser.openWebPage(
-      url: url,
-      customTabsOptions: CustomTabsOptions(
-        colorScheme: context.read<ThemeBloc>().darkTheme! ? CustomTabsColorScheme.dark : CustomTabsColorScheme.light,
-        instantAppsEnabled: true,
-        showTitle: true,
-        urlBarHidingEnabled: true,
-      ),
-      safariVCOptions: SafariViewControllerOptions(
-        barCollapsingEnabled: true,
-        dismissButtonStyle: SafariViewControllerDismissButtonStyle.close,
-        modalPresentationCapturesStatusBarAppearance: true,
-      ),
-    );
-    }catch(e){
+        url: url,
+        customTabsOptions: CustomTabsOptions(
+          colorScheme: context.read<ThemeBloc>().darkTheme!
+              ? CustomTabsColorScheme.dark
+              : CustomTabsColorScheme.light,
+          instantAppsEnabled: true,
+          showTitle: true,
+          urlBarHidingEnabled: true,
+        ),
+        safariVCOptions: SafariViewControllerOptions(
+          barCollapsingEnabled: true,
+          dismissButtonStyle: SafariViewControllerDismissButtonStyle.close,
+          modalPresentationCapturesStatusBarAppearance: true,
+        ),
+      );
+    } catch (e) {
       openToast1(context, 'Cant launch the url');
       debugPrint(e.toString());
     }
   }
 
   static bool isDirectionRTL(BuildContext context) {
-    return intl.Bidi.isRtlLanguage(Localizations.localeOf(context).languageCode);
+    return intl.Bidi.isRtlLanguage(
+        Localizations.localeOf(context).languageCode);
   }
 
-
-  static getNormalText (String text){
+  static getNormalText(String text) {
     return HtmlUnescape().convert(parse(text).documentElement!.text);
   }
-
 }

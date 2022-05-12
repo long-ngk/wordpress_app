@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ColorList{
+class ColorList {
   List randomColors = [
     Colors.orange[200],
     Colors.blue[200],

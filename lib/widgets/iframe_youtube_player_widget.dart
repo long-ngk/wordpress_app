@@ -14,7 +14,7 @@ class YoutubePlayerWidget extends StatefulWidget {
 class _YoutubePlayerWidgetState extends State<YoutubePlayerWidget> {
   late YoutubePlayerController _controller;
 
-  static getYoutubeVideoIdFromUrl (String videoUrl){
+  static getYoutubeVideoIdFromUrl(String videoUrl) {
     return YoutubePlayerController.convertUrlToId(videoUrl);
   }
 
@@ -50,7 +50,7 @@ class _YoutubePlayerWidgetState extends State<YoutubePlayerWidget> {
       ]);
     };
 
-    _controller.onExitFullscreen = (){
+    _controller.onExitFullscreen = () {
       SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     };
   }

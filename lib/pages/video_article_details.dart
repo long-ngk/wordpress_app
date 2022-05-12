@@ -39,7 +39,8 @@ class _VideoArticleDeatilsState extends State<VideoArticleDeatils> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(milliseconds: 0)).then((value) => context.read<AdsBloc>().showLoadedAds());
+    Future.delayed(Duration(milliseconds: 0))
+        .then((value) => context.read<AdsBloc>().showLoadedAds());
     Future.delayed(Duration(milliseconds: 100)).then((value) {
       setState(() {
         _rightPaddingValue = 10;
@@ -58,7 +59,7 @@ class _VideoArticleDeatilsState extends State<VideoArticleDeatils> {
         appBar: _appBar(),
         body: SafeArea(
           bottom: true,
-            child: Column(
+          child: Column(
             children: [
               Container(
                 child: Html(
@@ -72,7 +73,8 @@ class _VideoArticleDeatilsState extends State<VideoArticleDeatils> {
                       fontSize: FontSize(17.0),
                       lineHeight: LineHeight(1.4),
                     ),
-                    "figure": Style(margin: EdgeInsets.zero, padding: EdgeInsets.zero),
+                    "figure": Style(
+                        margin: EdgeInsets.zero, padding: EdgeInsets.zero),
                   },
                   customRender: {
                     "video": (RenderContext context1, Widget child) {
@@ -88,155 +90,170 @@ class _VideoArticleDeatilsState extends State<VideoArticleDeatils> {
                   child: Column(
                     children: [
                       Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-                              child: Column(
-                                children: [
-                                  Row(
-                                children: <Widget>[
-                                  Container(
-                                      alignment: Alignment.center,
-                                      //height: 30,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(5),
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .onBackground),
-                                      child: AnimatedPadding(
-                                        duration: Duration(milliseconds: 1000),
-                                        padding: EdgeInsets.only(
-                                            left: 10,
-                                            right: _rightPaddingValue,
-                                            top: 5,
-                                            bottom: 5),
-                                        child: Text(
-                                          article.category!,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: <Widget>[
+                                    Container(
+                                        alignment: Alignment.center,
+                                        //height: 30,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onBackground),
+                                        child: AnimatedPadding(
+                                          duration:
+                                              Duration(milliseconds: 1000),
+                                          padding: EdgeInsets.only(
+                                              left: 10,
+                                              right: _rightPaddingValue,
+                                              top: 5,
+                                              bottom: 5),
+                                          child: Text(
+                                            article.category!,
+                                            style: TextStyle(
+                                                fontSize: 15,
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .primary,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        )),
+                                    Spacer(),
+                                    BookmarkIcon(
+                                      bookmarkedList: bookmarkedList,
+                                      article: article,
+                                      iconSize: 22,
+                                      scaffoldKey: scaffoldKey,
+                                      iconColor: Colors.blueGrey,
+                                      normalIconColor: Colors.grey,
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          CupertinoIcons.time_solid,
+                                          color: Colors.grey[400],
+                                          size: 16,
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                          article.date!,
                                           style: TextStyle(
-                                              fontSize: 15,
+                                              fontSize: 14,
                                               color: Theme.of(context)
                                                   .colorScheme
-                                                  .primary,
+                                                  .secondary),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    Row(
+                                      children: [
+                                        CircleAvatar(
+                                          radius: 8,
+                                          backgroundImage:
+                                              CachedNetworkImageProvider(
+                                                  article.avatar!),
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                          'By ${article.author}',
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .secondary,
                                               fontWeight: FontWeight.w600),
                                         ),
-                                      )),
-                                  Spacer(),
-                                  BookmarkIcon(
-                                    bookmarkedList: bookmarkedList,
-                                    article: article,
-                                    iconSize: 22,
-                                    scaffoldKey: scaffoldKey,
-                                    iconColor: Colors.blueGrey,
-                                    normalIconColor: Colors.grey,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        CupertinoIcons.time_solid,
-                                        color: Colors.grey[400],
-                                        size: 16,
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        article.date!,
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .secondary),
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: 15,
-                                  ),
-                                  Row(
-                                    children: [
-                                      CircleAvatar(
-                                        radius: 8,
-                                        backgroundImage: CachedNetworkImageProvider(
-                                            article.avatar!),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        'By ${article.author}',
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .secondary,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(AppService.getNormalText(article.title!), style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        letterSpacing: -0.6,
-                                        wordSpacing: 1),),
-                              Divider(
-                                color: Theme.of(context).primaryColor,
-                                endIndent: 280,
-                                thickness: 2,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  TextButton.icon(
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.resolveWith(
-                                              (states) =>
-                                                  Theme.of(context).primaryColor),
-                                      shape: MaterialStateProperty.resolveWith(
-                                          (states) => RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(3))),
+                                      ],
                                     ),
-                                    icon: Icon(Icons.comment,
-                                        color: Colors.white, size: 20),
-                                    label: Text('comments',
-                                            style: TextStyle(color: Colors.white))
-                                        .tr(),
-                                    onPressed: () => nextScreenPopup(
-                                        context, CommentsPage(postId: article.id, categoryId: article.catId!, postTitle: article.title!, postLink: article.link!,)),
-                                  )
-                                ],
-                              ),
-                                ],
-                              ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  AppService.getNormalText(article.title!),
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: -0.6,
+                                      wordSpacing: 1),
+                                ),
+                                Divider(
+                                  color: Theme.of(context).primaryColor,
+                                  endIndent: 280,
+                                  thickness: 2,
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    TextButton.icon(
+                                      style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStateProperty.resolveWith(
+                                                (states) => Theme.of(context)
+                                                    .primaryColor),
+                                        shape:
+                                            MaterialStateProperty.resolveWith(
+                                                (states) =>
+                                                    RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(3))),
+                                      ),
+                                      icon: Icon(Icons.comment,
+                                          color: Colors.white, size: 20),
+                                      label: Text('comments',
+                                              style: TextStyle(
+                                                  color: Colors.white))
+                                          .tr(),
+                                      onPressed: () => nextScreenPopup(
+                                        context,
+                                        CommentsPage(
+                                          postId: article.id,
+                                          categoryId: article.catId!,
+                                          postTitle: article.title!,
+                                          postLink: article.link!,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
                             ),
-
-                            HtmlBody(
-                                  content: article.content!,
-                                  isVideoEnabled: false,
-                                  isimageEnabled: true,
-                                  isIframeVideoEnabled: true),
-                            
-                            SizedBox(
-                              height: 20,
-                            ),
-                          ],
-                        ),
+                          ),
+                          HtmlBody(
+                              content: article.content!,
+                              isVideoEnabled: false,
+                              isimageEnabled: true,
+                              isIframeVideoEnabled: true),
+                          SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                      ),
                       RelatedArticles(
                         postId: article.id,
                         catId: article.catId,
@@ -266,7 +283,7 @@ class _VideoArticleDeatilsState extends State<VideoArticleDeatils> {
           Icons.arrow_back_ios_sharp,
           size: 20,
         ),
-        onPressed: ()=> Navigator.pop(context),
+        onPressed: () => Navigator.pop(context),
       ),
       actions: [
         IconButton(
@@ -274,16 +291,16 @@ class _VideoArticleDeatilsState extends State<VideoArticleDeatils> {
             Icons.share,
             size: 20,
           ),
-          onPressed: ()=> _handleShare(),
+          onPressed: () => _handleShare(),
         ),
         IconButton(
           icon: Icon(
             Feather.external_link,
             size: 20,
           ),
-          onPressed: ()=> AppService().openLinkWithCustomTab(context, widget.article.link!),
+          onPressed: () =>
+              AppService().openLinkWithCustomTab(context, widget.article.link!),
         ),
-        
       ],
     );
   }

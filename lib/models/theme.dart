@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wordpress_app/config/config.dart';
 
-
 class ThemeModel {
   final lightTheme = ThemeData(
     //visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -14,14 +13,14 @@ class ThemeModel {
     brightness: Brightness.light,
     fontFamily: 'Manrope',
     colorScheme: ColorScheme.light(
-        primary: Colors.black, //text
-        secondary: Colors.blueGrey[600]!, //text
-        onPrimary: Colors.white, //card -1
-        onSecondary: Colors.grey[100]!, //card -2
-        primaryContainer: Colors.grey[200]!, //card color -3
-        secondaryContainer: Colors.grey[300]!, //card color -4
-        surface: Colors.grey[300]!, //shadow color -1
-        onBackground: Colors.grey[300]!, //loading card color
+      primary: Colors.black, //text
+      secondary: Colors.blueGrey[600]!, //text
+      onPrimary: Colors.white, //card -1
+      onSecondary: Colors.grey[100]!, //card -2
+      primaryContainer: Colors.grey[200]!, //card color -3
+      secondaryContainer: Colors.grey[300]!, //card color -4
+      surface: Colors.grey[300]!, //shadow color -1
+      onBackground: Colors.grey[300]!, //loading card color
     ),
 
     dividerColor: Colors.grey[300],
@@ -31,18 +30,18 @@ class ThemeModel {
     ),
 
     appBarTheme: AppBarTheme(
-        color: Colors.white,
-        elevation: 0,
-        titleTextStyle: TextStyle(
-                fontFamily: 'Manrope',
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-                letterSpacing: -0.7,
-                color: Colors.grey[900]),
-        iconTheme: IconThemeData(color: Colors.grey[900]),
-        actionsIconTheme: IconThemeData(color: Colors.grey[900]),
-        centerTitle: false,
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
+      color: Colors.white,
+      elevation: 0,
+      titleTextStyle: TextStyle(
+          fontFamily: 'Manrope',
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+          letterSpacing: -0.7,
+          color: Colors.grey[900]),
+      iconTheme: IconThemeData(color: Colors.grey[900]),
+      actionsIconTheme: IconThemeData(color: Colors.grey[900]),
+      centerTitle: false,
+      systemOverlayStyle: SystemUiOverlayStyle.dark,
     ),
 
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -53,16 +52,11 @@ class ThemeModel {
 
     popupMenuTheme: PopupMenuThemeData(
       textStyle: TextStyle(
-        fontFamily: 'Manrope',
-        color: Colors.grey[900],
-        fontWeight: FontWeight.w500
-      ),
+          fontFamily: 'Manrope',
+          color: Colors.grey[900],
+          fontWeight: FontWeight.w500),
     ),
   );
-
-
-
-  
 
   final darkTheme = ThemeData(
     //visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -81,7 +75,7 @@ class ThemeModel {
         primaryContainer: Colors.grey[800]!, //card color -3
         secondaryContainer: Colors.grey[800]!, //card color -4
         surface: Color(0xff303030), //shadow color - 1
-        onBackground: Colors.grey[800]!  //loading card color
+        onBackground: Colors.grey[800]! //loading card color
 
         ),
     dividerColor: Colors.grey[300],
@@ -93,16 +87,15 @@ class ThemeModel {
         color: Colors.grey[800],
         elevation: 0,
         titleTextStyle: TextStyle(
-                fontFamily: 'Manrope',
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-                letterSpacing: -0.7,
-                color: Colors.white),
+            fontFamily: 'Manrope',
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            letterSpacing: -0.7,
+            color: Colors.white),
         iconTheme: IconThemeData(color: Colors.white),
         actionsIconTheme: IconThemeData(color: Colors.white),
         centerTitle: false,
-        systemOverlayStyle: SystemUiOverlayStyle.light
-    ),
+        systemOverlayStyle: SystemUiOverlayStyle.light),
 
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: Colors.grey[800],
@@ -112,10 +105,9 @@ class ThemeModel {
 
     popupMenuTheme: PopupMenuThemeData(
       textStyle: TextStyle(
-        fontFamily: 'Manrope',
-        color: Colors.white,
-        fontWeight: FontWeight.w500
-      ),
+          fontFamily: 'Manrope',
+          color: Colors.white,
+          fontWeight: FontWeight.w500),
     ),
   );
 }

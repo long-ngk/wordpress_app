@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-UserResponseModel userResponseFromJson(String str) => UserResponseModel.fromJson(json.decode(str));
+UserResponseModel userResponseFromJson(String str) =>
+    UserResponseModel.fromJson(json.decode(str));
 
 class UserModel {
   String? userName;
@@ -27,10 +28,6 @@ class UserModel {
     return data;
   }
 }
-
-
-
-
 
 class UserResponseModel {
   int? code;

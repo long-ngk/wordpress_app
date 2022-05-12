@@ -71,18 +71,21 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
         } else {
           UserModel userModel = UserModel(
             userName: userNameCtrl.text,
-            emailId: emailCtrl.text, 
+            emailId: emailCtrl.text,
             password: passwordCtrl.text,
           );
-          await AuthService.createUser(userModel).then((UserResponseModel response) async{
-            if(response.code == 200){
-              await ub.guestUserSignout()
-              .then((value) => ub.saveUserData(userModel))
-              .then((value) => ub.setSignIn()).then((value){
+          await AuthService.createUser(userModel)
+              .then((UserResponseModel response) async {
+            if (response.code == 200) {
+              await ub
+                  .guestUserSignout()
+                  .then((value) => ub.saveUserData(userModel))
+                  .then((value) => ub.setSignIn())
+                  .then((value) {
                 _btnController.success();
                 afterSignUp();
               });
-            }else{
+            } else {
               _btnController.reset();
               openSnacbar(scaffoldKey, response.message);
             }

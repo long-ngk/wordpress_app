@@ -18,7 +18,6 @@ class PopularArticlesPage extends StatefulWidget {
 }
 
 class _PopularArticlesPageState extends State<PopularArticlesPage> {
-
   List<Article> _articles = [];
   bool? _hasData;
   var scaffoldKey = GlobalKey<ScaffoldState>();
@@ -34,8 +33,11 @@ class _PopularArticlesPageState extends State<PopularArticlesPage> {
 
   Future _fetchArticles() async {
     var response = WpConfig.blockedCategoryIdsforPopularPosts.isEmpty
-      ? await http.get(Uri.parse("${WpConfig.websiteUrl}/wp-json/wordpress-popular-posts/v1/popular-posts?range=$_timeRange&limit=$_postLimit"))
-      : await http.get(Uri.parse("${WpConfig.websiteUrl}/wp-json/wordpress-popular-posts/v1/popular-posts?range=$_timeRange&limit=$_postLimit&cat=" + WpConfig.blockedCategoryIdsforPopularPosts));
+        ? await http.get(Uri.parse(
+            "${WpConfig.websiteUrl}/wp-json/wordpress-popular-posts/v1/popular-posts?range=$_timeRange&limit=$_postLimit"))
+        : await http.get(Uri.parse(
+            "${WpConfig.websiteUrl}/wp-json/wordpress-popular-posts/v1/popular-posts?range=$_timeRange&limit=$_postLimit&cat=" +
+                WpConfig.blockedCategoryIdsforPopularPosts));
     if (this.mounted) {
       if (response.statusCode == 200) {
         List? decodedData = jsonDecode(response.body);
@@ -87,48 +89,51 @@ class _PopularArticlesPageState extends State<PopularArticlesPage> {
                   width: double.infinity,
                 ),
                 title: Text('popular contents',
-                        style: TextStyle(color: Colors.white, fontFamily: 'Manrope'))
+                        style: TextStyle(
+                            color: Colors.white, fontFamily: 'Manrope'))
                     .tr(),
                 titlePadding: EdgeInsets.only(left: 20, bottom: 15, right: 20),
               ),
             ),
-
-            _hasData == false ?
-            SliverFillRemaining(
-              child: Column(
-                children: [
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.20,),
-                  EmptyPageWithImage(image: Config.noContentImage, title: 'no contents found'.tr()),
-                ],
-              )
-            ):
-            
-            SliverPadding(
-              padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
-              sliver: SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    if(_articles.isEmpty && _hasData == true){
-                      return Container(
-                        padding: EdgeInsets.only(bottom: 15),
-                        child: LoadingCard(height: 250));
-                    }
-                    
-                    else if (index < _articles.length) {
-                      return SliverCard1(article: _articles[index], heroTag: 'categoryBased$index', scaffoldKey: scaffoldKey);
-                    }
-                    return null;
-                  },
-                  childCount: _articles.isEmpty  ? 6 : _articles.length + 1,
-                ),
-              ),
-            )
+            _hasData == false
+                ? SliverFillRemaining(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.20,
+                        ),
+                        EmptyPageWithImage(
+                            image: Config.noContentImage,
+                            title: 'no contents found'.tr()),
+                      ],
+                    ),
+                  )
+                : SliverPadding(
+                    padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
+                    sliver: SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                          if (_articles.isEmpty && _hasData == true) {
+                            return Container(
+                                padding: EdgeInsets.only(bottom: 15),
+                                child: LoadingCard(height: 250));
+                          } else if (index < _articles.length) {
+                            return SliverCard1(
+                                article: _articles[index],
+                                heroTag: 'categoryBased$index',
+                                scaffoldKey: scaffoldKey);
+                          }
+                          return null;
+                        },
+                        childCount:
+                            _articles.isEmpty ? 6 : _articles.length + 1,
+                      ),
+                    ),
+                  )
           ],
         ),
         onRefresh: () async => _onRefresh(),
       ),
     );
-
-    
   }
 }

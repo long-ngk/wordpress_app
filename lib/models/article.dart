@@ -32,30 +32,26 @@ class Article {
       this.catId,
       this.tags});
 
-
-  factory Article.fromJson(Map<String, dynamic> json){
+  factory Article.fromJson(Map<String, dynamic> json) {
     return Article(
-      id: json['id'] ?? 0,
-      title: json['title']['rendered'] ?? '',
-      content: json['content']['rendered'] ?? '',
-      image: json['custom']["featured_image"] != ""
-        ? json['custom']["featured_image"]
-        : WpConfig.randomPostFeatureImage,
-      video: json['custom']['td_video'] ?? '',
-      author: json['custom']['author']['name'] ?? '',
-      avatar: json['custom']['author']['avatar'] ?? 'https://icon-library.com/images/avatar-icon/avatar-icon-27.jpg',
-      date: DateFormat('dd MMMM, yyyy', 'en_US')
-        .format(DateTime.parse(json["date"]))
-        .toString(),
-      //timeAgo: Jiffy(json["date"]).fromNow(),
-      timeAgo: Jiffy(json['date']).add(hours: 6).fromNow(),
-      link: json['link'] ?? 'empty',
-      category: json["custom"]["categories"][0]["name"] ?? '',
-      catId: json["custom"]["categories"][0]["cat_ID"] ?? 0,
-      tags: json['tags']
-
-    );
+        id: json['id'] ?? 0,
+        title: json['title']['rendered'] ?? '',
+        content: json['content']['rendered'] ?? '',
+        image: json['custom']["featured_image"] != ""
+            ? json['custom']["featured_image"]
+            : WpConfig.randomPostFeatureImage,
+        video: json['custom']['td_video'] ?? '',
+        author: json['custom']['author']['name'] ?? '',
+        avatar: json['custom']['author']['avatar'] ??
+            'https://icon-library.com/images/avatar-icon/avatar-icon-27.jpg',
+        date: DateFormat('dd MMMM, yyyy', 'en_US')
+            .format(DateTime.parse(json["date"]))
+            .toString(),
+        //timeAgo: Jiffy(json["date"]).fromNow(),
+        timeAgo: Jiffy(json['date']).add(hours: 6).fromNow(),
+        link: json['link'] ?? 'empty',
+        category: json["custom"]["categories"][0]["name"] ?? '',
+        catId: json["custom"]["categories"][0]["cat_ID"] ?? 0,
+        tags: json['tags']);
   }
-
-
 }

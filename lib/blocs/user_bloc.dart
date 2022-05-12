@@ -1,12 +1,9 @@
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wordpress_app/models/user.dart';
 
 class UserBloc extends ChangeNotifier {
-
-  
   UserBloc() {
     checkSignIn();
     checkGuestUser();
@@ -18,15 +15,11 @@ class UserBloc extends ChangeNotifier {
   bool _isSignedIn = false;
   bool get isSignedIn => _isSignedIn;
 
-
   String? _userName;
   String? get name => _userName;
 
   String? _email;
   String? get email => _email;
-
-
-
 
   Future saveUserData(UserModel userModel) async {
     final SharedPreferences sp = await SharedPreferences.getInstance();
@@ -35,10 +28,7 @@ class UserBloc extends ChangeNotifier {
     _userName = userModel.userName;
     _email = userModel.emailId;
     notifyListeners();
-    
   }
-
-
 
   Future getUserData() async {
     final SharedPreferences sp = await SharedPreferences.getInstance();
@@ -47,9 +37,6 @@ class UserBloc extends ChangeNotifier {
     notifyListeners();
   }
 
-
-
-
   Future setSignIn() async {
     final SharedPreferences sp = await SharedPreferences.getInstance();
     sp.setBool('signed_in', true);
@@ -57,31 +44,21 @@ class UserBloc extends ChangeNotifier {
     notifyListeners();
   }
 
-
-
   void checkSignIn() async {
     final SharedPreferences sp = await SharedPreferences.getInstance();
     _isSignedIn = sp.getBool('signed_in') ?? false;
     notifyListeners();
   }
 
-
-
   Future userSignout() async {
-    await clearAllUserData()
-    .then((value){
+    await clearAllUserData().then((value) {
       _isSignedIn = false;
       _guestUser = false;
       _userName = null;
       _email = null;
       notifyListeners();
-      
     });
   }
-
-  
-
-
 
   Future loginAsGuestUser() async {
     final SharedPreferences sp = await SharedPreferences.getInstance();
@@ -90,26 +67,16 @@ class UserBloc extends ChangeNotifier {
     notifyListeners();
   }
 
-
-
   void checkGuestUser() async {
     final SharedPreferences sp = await SharedPreferences.getInstance();
     _guestUser = sp.getBool('guest_user') ?? false;
     notifyListeners();
   }
 
-
-
-
   Future clearAllUserData() async {
     final SharedPreferences sp = await SharedPreferences.getInstance();
     sp.clear();
-
   }
-
-
-
-
 
   Future guestUserSignout() async {
     final SharedPreferences sp = await SharedPreferences.getInstance();
@@ -117,8 +84,4 @@ class UserBloc extends ChangeNotifier {
     _guestUser = false;
     notifyListeners();
   }
-
-
-
-
 }

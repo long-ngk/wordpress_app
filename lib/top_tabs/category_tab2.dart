@@ -10,7 +10,6 @@ import 'package:wordpress_app/widgets/loading_indicator_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class CategoryTab2 extends StatefulWidget {
-
   final int categoryId;
   final GlobalKey<ScaffoldState> scaffoldKey;
 
@@ -48,7 +47,9 @@ class _CategoryTab2State extends State<CategoryTab2> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.10,
                 ),
-                EmptyPageWithImage(image: Config.noContentImage, title: 'no contents found'.tr())
+                EmptyPageWithImage(
+                    image: Config.noContentImage,
+                    title: 'no contents found'.tr())
               ],
             )
           : ListView.separated(
@@ -61,11 +62,9 @@ class _CategoryTab2State extends State<CategoryTab2> {
               ),
               shrinkWrap: true,
               itemBuilder: (_, int index) {
-
-                if(cb.articles.isEmpty && cb.hasData == true){
+                if (cb.articles.isEmpty && cb.hasData == true) {
                   return LoadingCard(height: 250);
-                }
-                else if (index < cb.articles.length) {
+                } else if (index < cb.articles.length) {
                   if (index.isEven) {
                     return Card4(
                         article: cb.articles[index],

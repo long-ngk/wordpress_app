@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
-
 Widget verticalLine(context, double height) {
   return Container(
     height: height,

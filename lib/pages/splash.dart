@@ -14,7 +14,6 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  
   Future _afterSplash() async {
     final UserBloc ub = context.read<UserBloc>();
     Future.delayed(Duration(milliseconds: 1500)).then((value) {
