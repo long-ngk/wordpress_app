@@ -90,7 +90,7 @@ class _HomeTabState extends State<HomeTab>
                 image: AssetImage(
                   Config.logo,
                 ),
-                height: 19,
+                height: 25,
               ),
               leading: IconButton(
                 icon: Icon(

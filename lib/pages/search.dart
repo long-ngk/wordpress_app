@@ -129,9 +129,10 @@ class _SearchPageState extends State<SearchPage> {
                     itemBuilder: (BuildContext context, int index) {
                       Article article = snapshot.data[index];
                       return Card6(
-                          article: article,
-                          heroTag: 'search${article.id}',
-                          scaffoldKey: scaffoldKey);
+                        article: article,
+                        heroTag: 'search${article.id}',
+                        scaffoldKey: scaffoldKey,
+                      );
                     },
                   );
               }
