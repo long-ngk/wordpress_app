@@ -52,17 +52,17 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
     final UserBloc ub = Provider.of<UserBloc>(context, listen: false);
     if (userNameCtrl.text.isEmpty) {
       _btnController.reset();
-      openSnacbar(scaffoldKey, 'Username is required');
+      openSnacbar(scaffoldKey, 'Username is required'.tr());
     } else if (emailCtrl.text.isEmpty) {
       _btnController.reset();
-      openSnacbar(scaffoldKey, 'Email is required');
+      openSnacbar(scaffoldKey, 'Email is required'.tr());
     } else if (passwordCtrl.text.isEmpty) {
       _btnController.reset();
-      openSnacbar(scaffoldKey, 'Password is required');
+      openSnacbar(scaffoldKey, 'Password is required'.tr());
     } else if (_checkboxTicked == false) {
       _btnController.reset();
       openSnacbar(
-          scaffoldKey, 'Please accept the terms & conditions to continue');
+          scaffoldKey, 'Please accept the terms & conditions to continue'.tr());
     } else {
       AppService().checkInternet().then((hasInternet) async {
         if (!hasInternet!) {
@@ -160,7 +160,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   ),
                   child: TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'Enter username',
+                        hintText: 'Enter username'.tr(),
                         hintStyle: TextStyle(
                             fontWeight: FontWeight.w500, fontSize: 15),
                         border: InputBorder.none,
@@ -190,7 +190,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   ),
                   child: TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'Enter email address',
+                        hintText: 'Enter email address'.tr(),
                         hintStyle: TextStyle(
                             fontWeight: FontWeight.w500, fontSize: 15),
                         border: InputBorder.none,
@@ -220,7 +220,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   ),
                   child: TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'Enter password',
+                        hintText: 'Enter password'.tr(),
                         hintStyle: TextStyle(
                             fontWeight: FontWeight.w500, fontSize: 15),
                         border: InputBorder.none,

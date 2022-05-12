@@ -84,18 +84,28 @@
     "twitter": "Twitter",
     "bookmark": "Yêu thích",
     "bookmarks": "Yêu thích",
+    "Entertainment": "Giải trí",
+    "Travel": "Du lịch",
+    "Technology": "Công nghệ",
+    "Science": "Khoa học",
 
     "clear all notification-dialog": "Bạn có muốn xóa tất cả dữ liệu thông báo không?",
     "clear all bookmark-dialog": "Bạn có muốn xóa tất cả các bài báo đã lưu không?",
 
     "accept terms": "Chấp nhận các điều khoản & điều kiện",
-    "flag comment" : "Gắn thẻ bình luận này",
-    "unflag comment" : "Bỏ gắn thẻ bình luận này",
+    "flag comment" : "Gắn cờ bình luận này",
+    "unflag comment" : "Bỏ gắn cờ bình luận này",
     "report" : "Báo cáo",
     "report-info" : "Báo cáo của bạn đã được gửi thành công đến các quản trị viên",
-    "comment flagged" : "Bình luận này đã được gắn cờ!"
+    "comment flagged" : "Bình luận này đã được gắn cờ!",
     
+    "Username is required": "Tên người dùng không được trống",
+    "Email is required": "Email không được trống",
+    "Password is required": "Password không được trống",
+    "Please accept the terms & conditions to continue": "Vui lòng chấp nhận các điều khoản & điều kiện để tiếp tục",
 
-
-
+    "Enter your username or email": "Nhập tên người dùng hoặc email",
+    "Enter password": "Nhập mật khẩu",
+    "Enter username": "Nhập tên người dùng",
+    "Enter email address": "Nhập email"
 }
