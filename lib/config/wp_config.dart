@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 
 class WpConfig {
   static const String websiteUrl = "http://192.168.1.94:81/wordpress";
