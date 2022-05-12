@@ -2,7 +2,6 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wordpress_app/blocs/category_tab1_bloc.dart';
-import 'package:wordpress_app/blocs/comment_bloc.dart';
 import 'package:wordpress_app/blocs/tab_index_bloc.dart';
 import 'package:wordpress_app/pages/splash.dart';
 import 'blocs/ads_bloc.dart';
@@ -46,8 +45,6 @@ class MyApp extends StatelessWidget {
                 ChangeNotifierProvider<CategoryTab2Bloc>(create: (context) => CategoryTab2Bloc()),
                 ChangeNotifierProvider<CategoryTab3Bloc>(create: (context) => CategoryTab3Bloc()),
                 ChangeNotifierProvider<CategoryTab4Bloc>(create: (context) => CategoryTab4Bloc()),
-                ChangeNotifierProvider<CommentsBloc>(create: (context) => CommentsBloc()),
-
               ],
               child: MaterialApp(
                   debugShowCheckedModeBanner: false,

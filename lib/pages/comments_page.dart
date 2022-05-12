@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:provider/provider.dart';
-import 'package:wordpress_app/blocs/comment_bloc.dart';
 import 'package:wordpress_app/blocs/user_bloc.dart';
 import 'package:wordpress_app/config/config.dart';
 import 'package:wordpress_app/models/comment.dart';
@@ -20,7 +19,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:wordpress_app/widgets/html_body.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../utils/cached_image.dart';
-
 
 class CommentsPage extends StatefulWidget {
   final int categoryId;
@@ -76,7 +74,6 @@ class _CommentsPageState extends State<CommentsPage> {
 
   @override
   void initState() {
-    Future.microtask(() => context.read<CommentsBloc>().getFlagList());
     _fetchComments = WordPressService().fetchCommentsById(widget.postId);
     super.initState();
   }
@@ -243,10 +240,10 @@ class _CommentsPageState extends State<CommentsPage> {
                 alignment: Alignment.bottomLeft,
                 child: CircleAvatar(
                   radius: 25,
-                   child: ClipRRect(
-                        child: Image.network(d.avatar!),
-                        borderRadius: BorderRadius.circular(50.0),
-                    ),
+                  child: ClipRRect(
+                    child: Image.network(d.avatar!),
+                    borderRadius: BorderRadius.circular(50.0),
+                  ),
                   // backgroundColor: _getRandomColor(),
                   // child: Text(
                   //   d.author![0].toUpperCase(),
@@ -254,7 +251,7 @@ class _CommentsPageState extends State<CommentsPage> {
                   //       fontSize: 22,
                   //       color: Colors.white,
                   //       fontWeight: FontWeight.w500),
-                  // ), 
+                  // ),
                 ),
               ),
               Expanded(
@@ -291,17 +288,13 @@ class _CommentsPageState extends State<CommentsPage> {
                           SizedBox(
                             height: 5,
                           ),
-                          _isCommentFlagged(d.id)
-                              ? Container(
-                                  child: Text('comment flagged').tr(),
-                                )
-                              : HtmlBody(
-                                  content: d.content!,
-                                  isVideoEnabled: true,
-                                  isimageEnabled: true,
-                                  isIframeVideoEnabled: true,
-                                  textPadding: 0.0,
-                                ),
+                          HtmlBody(
+                            content: d.content!,
+                            isVideoEnabled: true,
+                            isimageEnabled: true,
+                            isIframeVideoEnabled: true,
+                            textPadding: 0.0,
+                          )
                         ],
                       ),
                     ),
@@ -334,15 +327,6 @@ class _CommentsPageState extends State<CommentsPage> {
         ),
         itemBuilder: (BuildContext context) {
           return <PopupMenuItem>[
-            _isCommentFlagged(d.id)
-                ? PopupMenuItem(
-                    child: Text('unflag comment').tr(),
-                    value: 'unflag',
-                  )
-                : PopupMenuItem(
-                    child: Text('flag comment').tr(),
-                    value: 'flag',
-                  ),
             PopupMenuItem(
               child: Text('report').tr(),
               value: 'report',
@@ -350,15 +334,7 @@ class _CommentsPageState extends State<CommentsPage> {
           ];
         },
         onSelected: (dynamic value) async {
-          if (value == 'flag') {
-            await context.read<CommentsBloc>().addToFlagList(
-                context, widget.categoryId, widget.postId!, d.id!);
-            _onRefresh();
-          } else if (value == 'unflag') {
-            await context.read<CommentsBloc>().removeFromFlagList(
-                context, widget.categoryId, widget.postId!, d.id!);
-            _onRefresh();
-          } else if (value == 'report') {
+          if (value == 'report') {
             final UserBloc ub = Provider.of<UserBloc>(context, listen: false);
             if (ub.isSignedIn == true && ub.name != null) {
               AppService().sendCommentReportEmail(context, widget.postTitle,
@@ -369,16 +345,6 @@ class _CommentsPageState extends State<CommentsPage> {
             }
           }
         });
-  }
-
-  bool _isCommentFlagged(int? commentId) {
-    final cb = context.read<CommentsBloc>();
-    final flagId = "${widget.categoryId}-${widget.postId}-$commentId";
-    if (cb.flagList.contains(flagId)) {
-      return true;
-    } else {
-      return false;
-    }
   }
 
   Color? _getRandomColor() {
@@ -399,27 +365,28 @@ class _LoadingWidget extends StatelessWidget {
       ),
       itemBuilder: (BuildContext context, int index) {
         return Container(
-            margin: EdgeInsets.all(0),
-            child: Row(
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.bottomLeft,
-                  child: CircleAvatar(
-                    radius: 25,
-                    backgroundColor: Theme.of(context).colorScheme.onBackground,
+          margin: EdgeInsets.all(0),
+          child: Row(
+            children: <Widget>[
+              Container(
+                alignment: Alignment.bottomLeft,
+                child: CircleAvatar(
+                  radius: 25,
+                  backgroundColor: Theme.of(context).colorScheme.onBackground,
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  margin: EdgeInsets.only(left: 10, top: 10, right: 5),
+                  child: LoadingCard(
+                    height: 90,
+                    color: Theme.of(context).colorScheme.onBackground,
                   ),
                 ),
-                Flexible(
-                  child: Container(
-                    margin: EdgeInsets.only(left: 10, top: 10, right: 5),
-                    child: LoadingCard(
-                      height: 90,
-                      color: Theme.of(context).colorScheme.onBackground,
-                    ),
-                  ),
-                )
-              ],
-            ));
+              )
+            ],
+          ),
+        );
       },
     );
   }
