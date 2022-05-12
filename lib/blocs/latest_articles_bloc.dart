@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../config/wp_config.dart';
 import '../models/article.dart';
@@ -19,9 +20,9 @@ class LatestArticlesBloc extends ChangeNotifier {
   Future fetchData() async {
     var response = WpConfig.blockedCategoryIds.isEmpty
         ? await http.get(Uri.parse(
-            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts/?page=$_page&per_page=$_postAmountPerLoad"))
+            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?language=${WpConfig.articleLanguage.tr()}&page=$_page&per_page=$_postAmountPerLoad"))
         : await http.get(Uri.parse(
-            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts/?page=$_page&per_page=$_postAmountPerLoad&categories_exclude=" +
+            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?language=${WpConfig.articleLanguage.tr()}&page=$_page&per_page=$_postAmountPerLoad&categories_exclude=" +
                 WpConfig.blockedCategoryIds));
     if (response.statusCode == 200) {
       List decodedData = jsonDecode(response.body);

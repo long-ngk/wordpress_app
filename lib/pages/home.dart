@@ -2,12 +2,10 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:wordpress_app/blocs/ads_bloc.dart';
 import 'package:wordpress_app/blocs/category_bloc.dart';
 import 'package:wordpress_app/blocs/notification_bloc.dart';
 import 'package:wordpress_app/blocs/settings_bloc.dart';
 import 'package:wordpress_app/blocs/user_bloc.dart';
-import 'package:wordpress_app/config/ad_config.dart';
 import 'package:wordpress_app/services/app_service.dart';
 import 'package:wordpress_app/services/notification_service.dart';
 import 'package:wordpress_app/tabs/profile_tab.dart';
@@ -49,13 +47,8 @@ class _HomePageState extends State<HomePage> {
                           .read<NotificationBloc>()
                           .checkSubscription()
                           .then(
-                        (value) {
-                          if (AdConfig.isAdsEnabled) {
-                            AdConfig().initAdmob().then((value) =>
-                                context.read<AdsBloc>().initiateAds());
-                          }
-                        },
-                      ),
+                            (value) {},
+                          ),
                     ),
               );
         } else {

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../config/wp_config.dart';
 import '../models/article.dart';
@@ -23,9 +24,9 @@ class FeaturedBloc extends ChangeNotifier {
 
     var response = WpConfig.blockedCategoryIds.isEmpty
         ? await http.get(Uri.parse(
-            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?tags=${WpConfig.featuredTagID}&per_page=$_contentAmount"))
+            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?language=${WpConfig.articleLanguage.tr()}&tags=${WpConfig.featuredTagID}&per_page=$_contentAmount"))
         : await http.get(Uri.parse(
-            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?tags=${WpConfig.featuredTagID}&per_page=$_contentAmount&categories_exclude=" +
+            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?language=${WpConfig.articleLanguage.tr()}&tags=${WpConfig.featuredTagID}&per_page=$_contentAmount&categories_exclude=" +
                 WpConfig.blockedCategoryIds));
 
     List? decodedData = jsonDecode(response.body);

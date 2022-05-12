@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:wordpress_app/config/wp_config.dart';
@@ -26,11 +27,11 @@ class CategoryTab4Bloc extends ChangeNotifier {
   Future fetchData(int categoryId, mounted) async {
     var response = WpConfig.blockedCategoryIds.isEmpty
         ? await http.get(Uri.parse(
-            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?categories[]=" +
+            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?language=${WpConfig.articleLanguage.tr()}&categories[]=" +
                 categoryId.toString() +
                 "&page=$_page&per_page=$_postAmountPerLoad"))
         : await http.get(Uri.parse(
-            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?categories[]=" +
+            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?language=${WpConfig.articleLanguage.tr()}&categories[]=" +
                 categoryId.toString() +
                 "&page=$_page&per_page=$_postAmountPerLoad&categories_exclude=" +
                 WpConfig.blockedCategoryIds));

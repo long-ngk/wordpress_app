@@ -1,18 +1,20 @@
+import 'package:easy_localization/easy_localization.dart';
 
 class WpConfig {
-  static const String websiteUrl = "http://192.168.1.94:81/wordpress";
+  static const String websiteUrl = "http://10.0.2.2:81/wordpress";
 
   static const int featuredTagID = 14;
 
   static const int videoTagId = 15;
 
+  static const String articleLanguage = "article_language";
   // Hometab 4 categories
   // -- 'Serial Number' : [Category Id, 'Category Name'] -- Length should be 4.
-  static const Map selectedCategories = {
-    '1': [5, "Entertainment"],
-    '2': [6, "Travel"],
-    '3': [7, "Technology"],
-    '4': [8, "Science"],
+  static Map selectedCategories = {
+    '1': [5, "Entertainment".tr()],
+    '2': [6, "Travel".tr()],
+    '3': [7, "Technology".tr()],
+    '4': [8, "Science".tr()],
   };
 
   /*

@@ -28,10 +28,10 @@ void main() async {
     EasyLocalization(
       supportedLocales: [Locale('en'), Locale('vi')],
       path: 'assets/translations',
-      fallbackLocale: Locale('en'),
+      fallbackLocale: Locale('vi'),
 
       //Defaut language
-      startLocale: Locale('en'),
+      startLocale: Locale('vi'),
       useOnlyLangCode: true,
       child: MyApp(),
     )

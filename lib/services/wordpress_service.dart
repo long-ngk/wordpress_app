@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:wordpress_app/config/wp_config.dart';
 import 'package:wordpress_app/models/article.dart';
 import 'package:wordpress_app/models/comment.dart';
@@ -8,7 +9,7 @@ class WordPressService {
   Future fetchPostsByCategoryIdExceptPostId(
       int? postId, int? catId, int contentAmount) async {
     var response = await http.get(Uri.parse(
-        "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?exclude=$postId&categories[]=$catId&per_page=$contentAmount"));
+        "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?language=${WpConfig.articleLanguage.tr()}&exclude=$postId&categories[]=$catId&per_page=$contentAmount"));
     List? decodedData = jsonDecode(response.body);
     List<Article>? articles;
 
@@ -21,9 +22,9 @@ class WordPressService {
   Future fetchPostsBySearch(String searchText) async {
     var response = WpConfig.blockedCategoryIds.isEmpty
         ? await http.get(Uri.parse(
-            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?per_page=30&search=$searchText"))
+            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?language=${WpConfig.articleLanguage.tr()}&per_page=30&search=$searchText"))
         : await http.get(Uri.parse(
-            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?per_page=30&search=$searchText&categories_exclude=" +
+            "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?language=${WpConfig.articleLanguage.tr()}&per_page=30&search=$searchText&categories_exclude=" +
                 WpConfig.blockedCategoryIds));
     List? decodedData = jsonDecode(response.body);
     List<Article>? articles;

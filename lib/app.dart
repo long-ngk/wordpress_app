@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:wordpress_app/blocs/category_tab1_bloc.dart';
 import 'package:wordpress_app/blocs/tab_index_bloc.dart';
 import 'package:wordpress_app/pages/splash.dart';
-import 'blocs/ads_bloc.dart';
 import 'blocs/category_bloc.dart';
 import 'blocs/category_tab2_bloc.dart';
 import 'blocs/category_tab3_bloc.dart';
@@ -39,7 +38,6 @@ class MyApp extends StatelessWidget {
                 ChangeNotifierProvider<UserBloc>(create: (context) => UserBloc()),
                 ChangeNotifierProvider<NotificationBloc>(create: (context) => NotificationBloc()),
                 ChangeNotifierProvider<PopularArticlesBloc>(create: (context) => PopularArticlesBloc()),
-                ChangeNotifierProvider<AdsBloc>(create: (context) => AdsBloc()),
                 ChangeNotifierProvider<TabIndexBloc>(create: (context) => TabIndexBloc()),
                 ChangeNotifierProvider<CategoryTab1Bloc>(create: (context) => CategoryTab1Bloc()),
                 ChangeNotifierProvider<CategoryTab2Bloc>(create: (context) => CategoryTab2Bloc()),

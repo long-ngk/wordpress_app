@@ -57,7 +57,7 @@ class _CategoryBasedArticlesState extends State<CategoryBasedArticles> {
   Future _fetchArticles(int page) async {
     try {
       var response = await http.get(Uri.parse(
-          "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?categories[]=" +
+          "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?language=${WpConfig.articleLanguage.tr()}&categories[]=" +
               widget.categoryId.toString() +
               "&page=$page&per_page=$_postAmount"));
 

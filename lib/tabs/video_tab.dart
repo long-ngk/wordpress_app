@@ -47,8 +47,8 @@ class _VideoTabState extends State<VideoTab>
 
   Future _fetchArticles(int page) async {
     try {
-      var response =
-          await http.get(Uri.parse("${WpConfig.websiteUrl}/wp-json/wp/v2/posts?"
+      var response = await http.get(Uri.parse(
+          "${WpConfig.websiteUrl}/wp-json/wp/v2/posts?language=${WpConfig.articleLanguage.tr()}&"
                   'page=$_page' +
               '&tags=${WpConfig.videoTagId}' +
               '&per_page=$_postAmount'));

@@ -33,16 +33,16 @@ class _HomeTabState extends State<HomeTab>
       text: "explore".tr(),
     ),
     Tab(
-      text: (WpConfig.selectedCategories['1'][1] as String).tr(),
+      text: WpConfig.selectedCategories['1'][1],
     ),
     Tab(
-      text: (WpConfig.selectedCategories['2'][1] as String).tr(),
+      text: WpConfig.selectedCategories['2'][1],
     ),
     Tab(
-      text: (WpConfig.selectedCategories['3'][1] as String).tr(),
+      text: WpConfig.selectedCategories['3'][1],
     ),
     Tab(
-      text: (WpConfig.selectedCategories['4'][1] as String).tr(),
+      text: WpConfig.selectedCategories['4'][1],
     ),
   ];
 
