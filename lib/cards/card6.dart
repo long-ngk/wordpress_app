@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -78,7 +79,7 @@ class Card6 extends StatelessWidget {
                       height: 8,
                     ),
                     Text(
-                      article.category!.toUpperCase(),
+                      article.category!.tr().toUpperCase(),
                       style: TextStyle(
                           fontSize: 13,
                           color: Theme.of(context).colorScheme.secondary,

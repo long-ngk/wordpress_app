@@ -88,6 +88,7 @@
     "Travel": "Du lịch",
     "Technology": "Công nghệ",
     "Science": "Khoa học",
+    "Uncategorized": "Chưa phân loại",
 
     "clear all notification-dialog": "Bạn có muốn xóa tất cả dữ liệu thông báo không?",
     "clear all bookmark-dialog": "Bạn có muốn xóa tất cả các bài báo đã lưu không?",
@@ -109,5 +110,6 @@
     "Enter username": "Nhập tên người dùng",
     "Enter email address": "Nhập email",
 
-    "article_language": "vi"
+    "article_language": "vi",
+    "App Version": "Phiên bản"
 }

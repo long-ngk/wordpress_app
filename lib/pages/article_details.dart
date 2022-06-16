@@ -152,7 +152,7 @@ class _ArticleDetailsState extends State<ArticleDetails> {
                                                 top: 5,
                                                 bottom: 5),
                                             child: Text(
-                                              article.category!,
+                                              article.category!.tr(),
                                               style: TextStyle(
                                                   fontSize: 15,
                                                   color: Theme.of(context)

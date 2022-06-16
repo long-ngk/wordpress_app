@@ -88,7 +88,7 @@
     "Travel": "Travel",
     "Technology": "Technology",
     "Science": "Science",
-
+    "Uncategorized": "Uncategorized",
 
     "clear all notification-dialog": "Do you want to clear all the notification data?",
     "clear all bookmark-dialog": "Do you want to clear all the saved articles?",
@@ -110,5 +110,6 @@
     "Enter username": "Enter username",
     "Enter email address": "Enter email address",
 
-    "article_language": "en"
+    "article_language": "en",
+    "App Version": "App Version"
 }

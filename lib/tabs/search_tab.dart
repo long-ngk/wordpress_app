@@ -185,7 +185,7 @@ class _CategoryItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "${d.name!.toUpperCase()}",
+                    "${d.name!.tr().toUpperCase()}",
                     style: TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.w500,

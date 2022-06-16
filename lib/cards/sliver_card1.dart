@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -66,7 +67,7 @@ class SliverCard1 extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        article.category!.toUpperCase(),
+                        article.category!.tr().toUpperCase(),
                         style: TextStyle(
                             fontSize: 14,
                             color: Theme.of(context).colorScheme.secondary,

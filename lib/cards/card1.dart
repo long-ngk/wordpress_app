@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -65,7 +66,7 @@ class Card1 extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(5),
                                 color: Colors.blueGrey[600]),
                             child: Text(
-                              article.category!,
+                              article.category!.tr(),
                               style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,

@@ -190,7 +190,7 @@ class _CategoryBasedArticlesState extends State<CategoryBasedArticles> {
                     imageUrl: widget.categoryThumbnail, radius: 0.0),
               ),
       ),
-      title: Text(widget.categoryName!,
+      title: Text(widget.categoryName!.tr(),
           style: TextStyle(color: Colors.white, fontFamily: 'Manrope')),
       titlePadding: EdgeInsets.only(left: 20, bottom: 15, right: 20),
     );

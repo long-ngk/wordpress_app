@@ -17,6 +17,7 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String appVersion = "App Version";
     final d = context.watch<CategoryBloc>().categoryData;
     return Drawer(
       child: SingleChildScrollView(
@@ -40,7 +41,7 @@ class CustomDrawer extends StatelessWidget {
                           image: AssetImage(Config.logo)),
                     ),
                     Text(
-                        'App Version : ${context.watch<SettingsBloc>().appVersion}')
+                        '${appVersion.tr()} : ${context.watch<SettingsBloc>().appVersion}')
                   ],
                 )),
             Container(
@@ -185,7 +186,7 @@ class CustomDrawer extends StatelessWidget {
                     ),
                     title: InkWell(
                       child: Text(
-                        d[index].name!.toUpperCase(),
+                        d[index].name!.tr().toUpperCase(),
                         style: TextStyle(
                             color: Theme.of(context).colorScheme.secondary),
                       ),
