@@ -10,11 +10,11 @@ class WpConfig {
   static const String articleLanguage = "article_language";
   // Hometab 4 categories
   // -- 'Serial Number' : [Category Id, 'Category Name'] -- Length should be 4.
-  static Map selectedCategories = {
-    '1': [5, "Entertainment".tr()],
-    '2': [6, "Travel".tr()],
-    '3': [7, "Technology".tr()],
-    '4': [8, "Science".tr()],
+  static const Map selectedCategories = {
+    '1': [5, "Entertainment"],
+    '2': [6, "Travel"],
+    '3': [7, "Technology"],
+    '4': [8, "Science"],
   };
 
   /*

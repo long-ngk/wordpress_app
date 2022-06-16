@@ -28,23 +28,25 @@ class _HomeTabState extends State<HomeTab>
   late TabController _tabController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  List<Tab> _tabs = [
-    Tab(
-      text: "explore".tr(),
-    ),
-    Tab(
-      text: WpConfig.selectedCategories['1'][1],
-    ),
-    Tab(
-      text: WpConfig.selectedCategories['2'][1],
-    ),
-    Tab(
-      text: WpConfig.selectedCategories['3'][1],
-    ),
-    Tab(
-      text: WpConfig.selectedCategories['4'][1],
-    ),
-  ];
+  List<Tab> _getTabs() {
+    return [
+      Tab(
+        text: "explore".tr(),
+      ),
+      Tab(
+        text: (WpConfig.selectedCategories['1'][1] as String).tr(),
+      ),
+      Tab(
+        text: (WpConfig.selectedCategories['2'][1] as String).tr(),
+      ),
+      Tab(
+        text: (WpConfig.selectedCategories['3'][1] as String).tr(),
+      ),
+      Tab(
+        text: (WpConfig.selectedCategories['4'][1] as String).tr(),
+      ),
+    ];
+  }
 
   _fetchData() async {
     await AppService().checkInternet().then((bool? hasInternet) {
@@ -59,6 +61,7 @@ class _HomeTabState extends State<HomeTab>
   @override
   void initState() {
     super.initState();
+    List<Tab> _tabs = _getTabs();
     _tabController =
         TabController(length: _tabs.length, initialIndex: 0, vsync: this);
     _tabController.addListener(() {
@@ -144,7 +147,7 @@ class _HomeTabState extends State<HomeTab>
                   indicatorColor: Theme.of(context).primaryColor,
                   indicatorSize: MD2IndicatorSize.normal,
                 ),
-                tabs: _tabs,
+                tabs: _getTabs(),
               ),
             ),
           ];
