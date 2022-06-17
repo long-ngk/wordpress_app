@@ -167,7 +167,7 @@ class _ArticleDetailsState extends State<ArticleDetails> {
                                         article: article,
                                         iconSize: 22,
                                         scaffoldKey: scaffoldKey,
-                                        iconColor: Colors.blueGrey,
+                                        iconColor: Colors.pinkAccent,
                                         normalIconColor: Colors.grey,
                                       ),
                                     ],
